@@ -2,25 +2,22 @@
 using System.Collections;
 
 public class RotateRightStatement : Statement {
-	public GameObject robot;
-	// Use this for initialization
-	void Start () {
-		
-	}
 	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+	public int robotID = 0;
+	
+	protected override void Start() {
+		base.Start ();
+		info.text = "rotate ROBO" + (robotID + 1) + " rgt";
+	}	
 	
 	public override void OnTick() {
-		Debug.Log ("Moving robot");
-		robot.GetComponent<MainBot> ().StartAction ();
+		Debug.Log ("Rotating robot");
+		ObjectDict.obj.robots[robotID].StartAction ();
 		base.OnTick ();
 	}
 	
 	public override void OnTelegraph() {
-		robot.GetComponent<MainBot> ().RotateRightAction ();
+		ObjectDict.obj.robots[robotID].RotateRightAction ();
 		base.OnTelegraph ();
 	}
 }

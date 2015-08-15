@@ -41,8 +41,8 @@ public class DrawGrid : MonoBehaviour {
   
   void SetUpCamera() {
     Camera.main.transform.position = new Vector3(gridSizeX*0.5f, gridSizeY*0.5f, -20f);
-    float minWidth = (gridSizeX + 2) * Screen.height / Screen.width * 0.5f;
-    float minHeight = (gridSizeY + 2) * 0.5f;
+    float minWidth = ((gridSizeX + 2) * Screen.height / Screen.width * 0.5f) / (1f - Camera.main.rect.x);
+    float minHeight = (gridSizeY + 2) * 0.5f / (1 - Camera.main.rect.y);
     Camera.main.orthographicSize = Mathf.Max (minWidth, minHeight);
   }
   
