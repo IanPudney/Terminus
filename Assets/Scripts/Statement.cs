@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Statement : MonoBehaviour {
+public class Statement : ProgBlock {
 	protected System.Collections.Stack stack;
 	int nextStmt = 1;
 
@@ -16,9 +16,15 @@ public class Statement : MonoBehaviour {
 	}
 	
 	public virtual void OnTick() {
+		Debug.Log ("Tick: " + GetType ().ToString ());
 		if (CallNextChild() && ShouldPop()) {
 			TimeControl.OnStart -= OnTick;
-			((Statement)stack.Peek ()).Dequeue ();
+			if(stack.Count == 0) {
+				return; //we're done
+			}
+			Statement topStackStatement = ((Statement)stack.Peek ());
+			Debug.Log ("Popped " + topStackStatement.GetType().ToString());
+			topStackStatement.Dequeue ();
 		}
 	}
 
@@ -30,24 +36,33 @@ public class Statement : MonoBehaviour {
 	public virtual void Dequeue() {
 		stack.Pop ();
 		TimeControl.OnStart += OnTick; 
-	}
+	}	
 
 	public virtual bool CallNextChild() {
-		//call the next child, and remove this from the callback
-		Statement[] children = gameObject.GetComponentsInChildren<Statement>(); 
-		if (nextStmt >= children.Length) {
-			nextStmt = 1;
-			return true;
+		while (true) {
+			//call the next child, and remove this from the callback
+			Statement[] children = gameObject.GetComponentsInChildren<Statement>(); 
+			if (nextStmt >= children.Length) {
+				nextStmt = 1;
+				Debug.Log (GetType ().ToString () + " CallNextChild returns true");
+				return true;
+			}
+			if (children [nextStmt] is Placeholder) {
+				nextStmt++;
+				continue;
+			}
+			Queue ();
+			TimeControl.OnStart += children[nextStmt].OnTick;
+			children [nextStmt].stack = stack;
+			nextStmt ++;
+			Debug.Log (GetType ().ToString () + " CallNextChild returns false");
+			return false;
 		}
-		Queue ();
-		TimeControl.OnStart += children[nextStmt].OnTick;
-		children [nextStmt].stack = stack;
-		nextStmt ++;
-		return false;
 	}
 	public virtual bool ShouldPop() {
 		//whether this should be popped when all its children are done
 		//loops should override this
 		return true;
 	}
+
 }
