@@ -8,11 +8,16 @@ public class TimeControl : MonoBehaviour {
 	
 	//Robbit
 	public static event TelegraphAction TriggerMoveForward;
+	public static event TelegraphAction TriggerRotateLeft;
+	public static event TelegraphAction TriggerRotateRight;
 	
 	//Door
 	public static event TelegraphAction TriggerDoorOpen;
 	public static event TelegraphAction TriggerDoorClose;
 	public static event TelegraphAction TriggerDoorToogle;
+	
+	//Wall
+	public static event TelegraphAction TriggerWallReport;
 	
 	//Universal
 	public static event StartAction OnStart;
@@ -23,8 +28,8 @@ public class TimeControl : MonoBehaviour {
 	
 	//Handles time controls.
 	float time_since_update = 0;
-	float transition_time = 0.5f;
-	float time_between_steps = 1f;
+	public float transition_time = 0.5f;
+	public float time_between_steps = 1f;
 	
 	enum state {
 		between,
@@ -48,8 +53,13 @@ public class TimeControl : MonoBehaviour {
 				time_since_update -= time_between_steps;
 				tick += 1;
 				State = state.transition;
+				if (tick % 3 == 0) {
+					TriggerRotateLeft();
+				} else {
+					TriggerMoveForward();
+				}
 				TriggerDoorToogle();
-				TriggerMoveForward();
+				TriggerWallReport();
 				OnStart();
 			}
 		} else { //state is transitioning

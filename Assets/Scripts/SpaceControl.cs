@@ -9,14 +9,29 @@ public class SpaceControl : MonoBehaviour {
 	
 	List<List<List<Vector3>>> actionspace = new List<List<List<Vector3>>>();
 	
-	// Use this for initialization
 	void Awake () {
 		obj = this;
-		for (int x = 0; x < xSize; ++x) {
+		
+		//Configure action space
+		for (int x = 0; x < xSize + 2; ++x) {
 			actionspace.Add(new List<List<Vector3>>());
-			for (int y = 0; y < ySize; ++y) {
+			for (int y = 0; y < ySize + 2; ++y) {
 				actionspace[x].Add (new List<Vector3>());
 			}
+		}
+	}
+	
+	void Start() {
+		//Build walls around the edge to handle undetermined behavior
+		xSize += 2;
+		ySize += 2;
+		for (int x = 0; x < xSize; ++x) {
+			Instantiate(ProtoDict.obj.wall, new Vector3(x * 1.0f + 0.5f, 0.5f, 0f), Quaternion.identity);
+			Instantiate(ProtoDict.obj.wall, new Vector3(x * 1.0f + 0.5f, ySize * 1.0f - 0.5f, 0f), Quaternion.identity);
+		}
+		for (int y = 1; y < ySize - 1; ++y) {
+			Instantiate(ProtoDict.obj.wall, new Vector3(0.5f, y * 1.0f + 0.5f, 0f), Quaternion.identity);
+			Instantiate(ProtoDict.obj.wall, new Vector3(xSize * 1.0f - 0.5f, y * 1.0f + 0.5f, 0f), Quaternion.identity);
 		}
 	}
 	

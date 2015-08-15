@@ -2,14 +2,19 @@
 using System.Collections;
 
 public class Wall : MonoBehaviour {
-
-	// Use this for initialization
-	void Start () {
+	const float PRIORITY = 5f;
 	
+	void OnEnable() {
+		TimeControl.TriggerWallReport += SendReport;
+	}
+		
+	void OnDisable() {
+		TimeControl.TriggerWallReport -= SendReport;
 	}
 	
-	// Update is called once per frame
-	void Update () {
-	
+	public void SendReport() {
+		SpaceControl.obj.AttemptAction(PRIORITY * Vector3.forward,
+		                               Mathf.FloorToInt(transform.position.x),
+		                               Mathf.FloorToInt(transform.position.y));
 	}
 }

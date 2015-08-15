@@ -99,7 +99,6 @@ public class Doorway : MonoBehaviour {
 	}
 	
 	public void StartAction() {
-		print ("Starting action");
 		if (state == State.Open) {
 			Vector3 travelVector = SpaceControl.obj.ResolveAction(
 					PRIORITY * (OpenLocation - ClosedLocation),
