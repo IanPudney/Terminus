@@ -11,11 +11,13 @@ public class SpaceControl : MonoBehaviour {
   
   void Awake () {
     obj = this;
+    xSize += 2;
+    ySize += 2;
     
     //Configure action space
-    for (int x = 0; x < xSize + 2; ++x) {
+    for (int x = 0; x < xSize; ++x) {
       actionspace.Add(new List<List<Vector3>>());
-      for (int y = 0; y < ySize + 2; ++y) {
+      for (int y = 0; y < ySize; ++y) {
         actionspace[x].Add (new List<Vector3>());
       }
     }
@@ -23,8 +25,6 @@ public class SpaceControl : MonoBehaviour {
   
   void Start() {
     //Build walls around the edge to handle undetermined behavior
-    xSize += 2;
-    ySize += 2;
     for (int x = 0; x < xSize; ++x) {
       GameObject a = Instantiate(ProtoDict.obj.wall,
           new Vector3(x * 1.0f + 0.5f, 0.5f, 0f), Quaternion.identity) as GameObject;
