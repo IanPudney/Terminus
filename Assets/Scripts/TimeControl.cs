@@ -2,18 +2,20 @@
 using System.Collections;
 
 public class TimeControl : MonoBehaviour {
+	public delegate void TelegraphAction();
 	public delegate void StartAction();
 	public delegate void StopAction();
 	
 	//Robbit
-	public static event StartAction OnStart;
+	public static event TelegraphAction TriggerMoveForward;
 	
 	//Door
-	public static event StartAction TriggerDoorOpen;
-	public static event StartAction TriggerDoorClose;
-	public static event StartAction TriggerDoorToogle;
+	public static event TelegraphAction TriggerDoorOpen;
+	public static event TelegraphAction TriggerDoorClose;
+	public static event TelegraphAction TriggerDoorToogle;
 	
 	//Universal
+	public static event StartAction OnStart;
 	public static event StopAction OnStop;
 	
 	static public TimeControl obj;
@@ -46,8 +48,9 @@ public class TimeControl : MonoBehaviour {
 				time_since_update -= time_between_steps;
 				tick += 1;
 				State = state.transition;
-				OnStart();
 				TriggerDoorToogle();
+				TriggerMoveForward();
+				OnStart();
 			}
 		} else { //state is transitioning
 			if (time_since_update > transition_time) {
