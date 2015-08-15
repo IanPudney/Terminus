@@ -3,14 +3,13 @@ using System.Collections;
 
 public class WhileStatement : StmtBlock {
 
-  // Use this for initialization
   public override void Start () {
     base.Start ();
+    info.text = "while (stmt):";
   }
   
-  // Update is called once per frame
-  void Update () {
-  
+  protected override void Update () {
+  	base.Update();
   }
 
   public override void OnTick() {

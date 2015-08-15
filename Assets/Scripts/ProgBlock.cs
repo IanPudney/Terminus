@@ -10,7 +10,7 @@ public class ProgBlock : MonoBehaviour {
   	Object textObj = GameObject.Instantiate(ProtoDict.obj.infoText);
   	infoPanel = ((GameObject)textObj).GetComponent<Image>();
   	infoPanel.transform.SetParent(transform);
-  	infoPanel.rectTransform.localPosition = new Vector2(0.25f, 0f);
+  	infoPanel.transform.localPosition = new Vector3(0.25f, 0f, -2f);
   	info = infoPanel.GetComponentInChildren<Text>();
   	info.GetComponent<ContentSizeFitter>().SetLayoutHorizontal();
   }

@@ -8,6 +8,7 @@ public class Placeholder : Statement {
   protected override void Start () {
     placeholders.Add (this);
     base.Start();
+    info.text = "{ }";
   }
   
   protected override void Update() {

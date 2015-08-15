@@ -8,6 +8,7 @@ public class BaseStatement : StmtBlock {
     TimeControl.OnStart += OnTick;
     stack = new System.Collections.Stack ();
     base.Start ();
+    info.text = "execute program:";
   }
   
   void Update () {

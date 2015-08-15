@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class StmtBlock : Statement {
-  // Use this for initialization
   virtual public void Start () {
     Debug.Log ("Instantiating Placeholder");
     GameObject initialPlaceholder = Instantiate(ProtoDict.obj.placeholder, transform.position, transform.rotation) as GameObject;
@@ -13,8 +12,8 @@ public class StmtBlock : Statement {
     base.Start();
   }
   
-  // Update is called once per frame
-  void Update () {
+  protected override void Update () {
+  	base.Update();
   }
 
   void ReplacePlaceholder(Placeholder ps, ProgBlock pg) {
