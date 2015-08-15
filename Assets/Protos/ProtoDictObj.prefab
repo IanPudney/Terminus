@@ -43,6 +43,7 @@ MonoBehaviour:
   backdrop: {fileID: 173350, guid: 3ab87e4b37216b948a9ca3c7fa5fa7b9, type: 2}
   doorBrace: {fileID: 167896, guid: c93d4481d9ccb9345bc7b3fbffcc9133, type: 2}
   wall: {fileID: 167600, guid: f0ebe5b5ebfc0fa46b881547f47296aa, type: 2}
+  placeholder: {fileID: 138894, guid: e20894488b15c7e44a8bc41c50c0794b, type: 2}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

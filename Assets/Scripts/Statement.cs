@@ -19,6 +19,7 @@ public class Statement : ProgBlock {
 		Debug.Log ("Tick: " + GetType ().ToString ());
 		if (CallNextChild() && ShouldPop()) {
 			TimeControl.OnStart -= OnTick;
+			TimeControl.OnTelegraph -= OnTelegraph;
 			if(stack.Count == 0) {
 				return; //we're done
 			}
@@ -28,14 +29,20 @@ public class Statement : ProgBlock {
 		}
 	}
 
+	public virtual void OnTelegraph() {
+
+	}
+
 	public virtual void Queue() {
 		stack.Push (this);
 		TimeControl.OnStart -= OnTick;
+		TimeControl.OnTelegraph -= OnTelegraph;
 	}
 
 	public virtual void Dequeue() {
 		stack.Pop ();
 		TimeControl.OnStart += OnTick; 
+		TimeControl.OnTelegraph += OnTelegraph;
 	}	
 
 	public virtual bool CallNextChild() {
@@ -53,6 +60,7 @@ public class Statement : ProgBlock {
 			}
 			Queue ();
 			TimeControl.OnStart += children[nextStmt].OnTick;
+			TimeControl.OnTelegraph += children[nextStmt].OnTelegraph;
 			children [nextStmt].stack = stack;
 			nextStmt ++;
 			Debug.Log (GetType ().ToString () + " CallNextChild returns false");

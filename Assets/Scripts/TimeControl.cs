@@ -6,20 +6,8 @@ public class TimeControl : MonoBehaviour {
 	public delegate void StartAction();
 	public delegate void StopAction();
 	
-	//Robbit
-	public static event TelegraphAction TriggerMoveForward;
-	public static event TelegraphAction TriggerRotateLeft;
-	public static event TelegraphAction TriggerRotateRight;
-	
-	//Door
-	public static event TelegraphAction TriggerDoorOpen;
-	public static event TelegraphAction TriggerDoorClose;
-	public static event TelegraphAction TriggerDoorToogle;
-	
-	//Wall
-	public static event TelegraphAction TriggerWallReport;
-	
 	//Universal
+	public static event TelegraphAction OnTelegraph;
 	public static event StartAction OnStart;
 	public static event StopAction OnStop;
 	
@@ -53,14 +41,8 @@ public class TimeControl : MonoBehaviour {
 				time_since_update -= time_between_steps;
 				tick += 1;
 				State = state.transition;
-				if (tick % 3 == 0) {
-					TriggerRotateLeft();
-				} else {
-					TriggerMoveForward();
-				}
-				TriggerDoorToogle();
-				TriggerWallReport();
-				OnStart();
+			if(OnTelegraph != null) OnTelegraph();
+			if(OnStart != null) OnStart();
 			}
 		} else { //state is transitioning
 			if (time_since_update > transition_time) {
