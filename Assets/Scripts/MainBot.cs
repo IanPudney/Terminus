@@ -9,18 +9,17 @@ public class MainBot : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		StartLocation = transform.position;
+		StopLocation = StartLocation;
 		Active = false;
 	}
 	
 	//Don't touch this ever.	
 	void OnEnable() {
-		TimeControl.OnStart += StartAction;
 		TimeControl.OnStop += StopAction;
 	}
 	
 	//Don't touch this ever.
 	void OnDisable() {
-		TimeControl.OnStart -= StartAction;
 		TimeControl.OnStop -= StopAction;
 	}
 	
