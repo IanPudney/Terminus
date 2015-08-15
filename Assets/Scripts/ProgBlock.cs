@@ -3,21 +3,19 @@ using UnityEngine.UI;
 using System.Collections;
 
 public class ProgBlock : MonoBehaviour {
-  protected Text info;
-  protected Image infoPanel;
+  protected Text label;
   
   protected virtual void Start () {
-  	Object textObj = GameObject.Instantiate(ProtoDict.obj.infoText);
-  	infoPanel = ((GameObject)textObj).GetComponent<Image>();
-  	infoPanel.transform.SetParent(transform);
-  	infoPanel.transform.localPosition = new Vector3(0.25f, 0f, -2f);
-  	info = infoPanel.GetComponentInChildren<Text>();
-  	info.GetComponent<ContentSizeFitter>().SetLayoutHorizontal();
+		label = GameObject.Instantiate(ProtoDict.obj.label) as Text;
+		label.transform.parent = transform;
+		label.transform.localPosition = new Vector3(0, 0, -2);
+		label.transform.localScale = new Vector3(0.02f/transform.localScale.x, 
+		                                     0.02f/transform.localScale.y, 
+		                                     0.02f/transform.localScale.z);
+		label.fontSize = 25;
   }
   
   protected virtual void Update() {
-	infoPanel.rectTransform.sizeDelta = info.rectTransform.sizeDelta * info.transform.localScale.x
-										+ new Vector2(0.5f, 0.5f);
   }
   
   IEnumerator OnMouseDown()
@@ -29,10 +27,7 @@ public class ProgBlock : MonoBehaviour {
 
     Vector3 screenSpace = Camera.main.WorldToScreenPoint(transform.position);
     Vector3 offset = transform.position - Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, screenSpace.z));
-    
-		Debug.Log ("Trying oldparent fixup");
 		if (oldParent != null) {
-			Debug.Log ("Oldparent not null");
 			oldParent.RecursiveLayout ();
 		}
 

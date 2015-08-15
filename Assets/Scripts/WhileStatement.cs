@@ -5,7 +5,7 @@ public class WhileStatement : StmtBlock {
 
   public override void Start () {
     base.Start ();
-    info.text = "while (stmt):";
+    label.text = "while (stmt):";
   }
   
   protected override void Update () {
