@@ -22,9 +22,13 @@ public class TimeControl : MonoBehaviour {
 	};
 	
 	state State = state.between;
+
+	void Empty() {}
 	
 	void Start() {
 		obj = this;
+		OnStart += Empty;
+		OnStop += Empty;
 	}
 	
 	void Update () {
