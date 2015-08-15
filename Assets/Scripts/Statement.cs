@@ -24,7 +24,6 @@ public class Statement : ProgBlock {
 				return; //we're done
 			}
 			Statement topStackStatement = ((Statement)stack.Peek ());
-			Debug.Log ("Popped " + topStackStatement.GetType().ToString());
 			topStackStatement.Dequeue ();
 		}
 	}
@@ -51,7 +50,6 @@ public class Statement : ProgBlock {
 			Statement[] children = gameObject.GetComponentsInChildren<Statement>(); 
 			if (nextStmt >= children.Length) {
 				nextStmt = 1;
-				Debug.Log (GetType ().ToString () + " CallNextChild returns true");
 				return true;
 			}
 			if (children [nextStmt] is Placeholder) {
@@ -63,7 +61,6 @@ public class Statement : ProgBlock {
 			TimeControl.OnTelegraph += children[nextStmt].OnTelegraph;
 			children [nextStmt].stack = stack;
 			nextStmt ++;
-			Debug.Log (GetType ().ToString () + " CallNextChild returns false");
 			return false;
 		}
 	}

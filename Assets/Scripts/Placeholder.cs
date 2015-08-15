@@ -16,7 +16,7 @@ public class Placeholder : Statement {
 	static public Placeholder GetClosestPlaceholder(Transform targetTransform)
 	{
 		Placeholder pMin = null;
-		float minDist = Mathf.Infinity;
+		float minDist = 0.5f;
 		Vector3 currentPos = targetTransform.position;
 		foreach (Object obj in placeholders)
 		{

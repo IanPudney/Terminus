@@ -29,7 +29,9 @@ public class ProgBlock : MonoBehaviour {
 		}
 		//find the nearest placeholder and replace it
 		Placeholder nearest = Placeholder.GetClosestPlaceholder (transform);
-		nearest.GetComponent<Placeholder> ().Replace (this);
+		if (nearest != null) {
+			nearest.GetComponent<Placeholder> ().Replace (this);
+		}
 	}
 	public virtual float Layout() {
 		return transform.localScale.y;
