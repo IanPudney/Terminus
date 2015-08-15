@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class TimeControl : MonoBehaviour {
 	public delegate void TelegraphAction();
@@ -28,8 +29,16 @@ public class TimeControl : MonoBehaviour {
 	
 	//Handles time controls.
 	float time_since_update = 0;
-	public float transition_time = 0.5f;
-	public float time_between_steps = 1f;
+	//public float transition_time = 0.5f;
+	//public float time_between_steps = 1f;
+	
+	float slider_rate;
+	public float time_between_steps {
+		get { return slider_rate / (1f - Mathf.Pow(slider_rate, 6f)); }
+	}
+	public float transition_time {
+		get { return 1f / (10f * (1f - slider_rate)); }
+	}
 	
 	enum state {
 		between,
@@ -47,6 +56,7 @@ public class TimeControl : MonoBehaviour {
 	}
 	
 	void Update () {
+		slider_rate = 1f - FindObjectOfType<Slider>().value;
 		time_since_update += Time.deltaTime	;
 		if (State == state.between) {
 			if (time_since_update > time_between_steps) {
