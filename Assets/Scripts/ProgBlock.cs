@@ -23,11 +23,19 @@ public class ProgBlock : MonoBehaviour {
   IEnumerator OnMouseDown()
   {
     //remove from parent
+		ProgBlock oldParent = transform.parent.gameObject.GetComponent<ProgBlock> ();
+
 	transform.SetParent(UICanvas.obj.transform);
 
     Vector3 screenSpace = Camera.main.WorldToScreenPoint(transform.position);
     Vector3 offset = transform.position - Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, screenSpace.z));
     
+		Debug.Log ("Trying oldparent fixup");
+		if (oldParent != null) {
+			Debug.Log ("Oldparent not null");
+			oldParent.RecursiveLayout ();
+		}
+
     while (Input.GetMouseButton(0))
     {
       Vector3 curScreenSpace = new Vector3(Input.mousePosition.x, Input.mousePosition.y, screenSpace.z);
@@ -44,4 +52,15 @@ public class ProgBlock : MonoBehaviour {
   public virtual float Layout() {
     return transform.localScale.y;
   }
+
+  public virtual void RecursiveLayout() {
+		ProgBlock uppermost = this;
+		while (true) {
+			if(uppermost.transform.parent == UICanvas.obj.transform) break;
+			ProgBlock parent = uppermost.transform.parent.gameObject.GetComponent<ProgBlock>();
+			if(parent == UICanvas.obj.transform) break;
+			uppermost = parent;
+		}
+		uppermost.Layout ();
+	}
 }
