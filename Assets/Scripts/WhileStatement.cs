@@ -1,10 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class WhileStatement : Statement {
+public class WhileStatement : StmtBlock {
 
 	// Use this for initialization
-	void Start () {
+	public override void Start () {
+		base.Start ();
 	}
 	
 	// Update is called once per frame
@@ -19,4 +20,6 @@ public class WhileStatement : Statement {
 	public override bool ShouldPop() {
 		return false;
 	}
+
+
 }

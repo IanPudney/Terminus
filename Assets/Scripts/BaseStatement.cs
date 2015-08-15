@@ -1,12 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class BaseStatement : Statement {
+public class BaseStatement : StmtBlock {
 
 	// Use this for initialization
-	void Start () {
+	public override void Start () {
 		TimeControl.OnStart += OnTick;
 		stack = new System.Collections.Stack ();
+		base.Start ();
 	}
 	
 	// Update is called once per frame

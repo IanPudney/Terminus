@@ -14,7 +14,7 @@ public class PrintStatement : Statement {
 	}
 
 	public override void OnTick() {
-		Debug.Log (value);
+		Debug.LogError (value);
 		base.OnTick ();
 	}
 }

@@ -10,6 +10,8 @@ public class ProtoDict : MonoBehaviour {
 	//World objects
 	public GameObject wall;
 	
+	public GameObject placeholder;
+	
 	void Awake () {
 		obj = this;
 	}

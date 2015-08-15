@@ -16,5 +16,6 @@ public class MoveStatement : Statement {
 	public override void OnTick() {
 		Debug.Log ("Moving robot");
 		robot.GetComponent<MainBot> ().StartAction ();
+		base.OnTick ();
 	}
 }
