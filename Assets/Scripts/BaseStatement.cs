@@ -9,7 +9,6 @@ public class BaseStatement : StmtBlock {
     TimeControl.OnStart += OnTick;
     stack = new System.Collections.Stack ();
 	label.text = "On <color=\"cyan\">Play</color>";
-    base.Start ();
   }
   
   void Update () {
