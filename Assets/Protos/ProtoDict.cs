@@ -7,6 +7,8 @@ public class ProtoDict : MonoBehaviour {
 	public GameObject grid, backdrop;
 	//Child objects
 	public GameObject doorBrace;
+
+	public GameObject placeholder;
 	
 	void Awake () {
 		obj = this;
