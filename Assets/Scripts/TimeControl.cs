@@ -4,11 +4,19 @@ using System.Collections;
 public class TimeControl : MonoBehaviour {
 	public delegate void StartAction();
 	public delegate void StopAction();
+	
+	//Robbit
 	public static event StartAction OnStart;
+	
+	//Door
+	public static event StartAction TriggerDoorOpen;
+	public static event StartAction TriggerDoorClose;
+	public static event StartAction TriggerDoorToogle;
+	
+	//Universal
 	public static event StopAction OnStop;
 	
 	static public TimeControl obj;
-	
 	public int tick = 0;
 	
 	//Handles time controls.
@@ -35,6 +43,7 @@ public class TimeControl : MonoBehaviour {
 				tick += 1;
 				State = state.transition;
 				OnStart();
+				TriggerDoorToogle();
 			}
 		} else { //state is transitioning
 			if (time_since_update > transition_time) {
