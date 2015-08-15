@@ -22,15 +22,7 @@ public class StmtBlock : Statement {
     pg.transform.parent = this.transform;
     ps.transform.parent = this.transform;
 
-    ProgBlock uppermost = this;
-    while (true) {
-      if(uppermost.transform.parent == UICanvas.obj.transform) break;
-      ProgBlock parent = uppermost.transform.parent.gameObject.GetComponent<ProgBlock>();
-	  if(parent == UICanvas.obj.transform) break;
-      uppermost = parent;
-    }
-    uppermost.Layout ();
-
+		RecursiveLayout ();
   }
 
   public override float Layout() {
