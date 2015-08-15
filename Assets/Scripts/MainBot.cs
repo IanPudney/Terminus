@@ -8,6 +8,7 @@ public class MainBot : MonoBehaviour {
   Quaternion StopRotation;
   bool Active;
   Vector3 DoorVector;
+  int ID;
   
   const float PRIORITY = 1f;
 
@@ -19,6 +20,7 @@ public class MainBot : MonoBehaviour {
     DoorVector = Vector3.zero;
     StartRotation = transform.rotation;
     StopRotation = StartRotation;
+    ID = ObjectDict.obj.AddToRobotsDict(this);
   }
 
   void OnEnable() {

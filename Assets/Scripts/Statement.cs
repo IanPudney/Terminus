@@ -5,14 +5,8 @@ public class Statement : ProgBlock {
   protected System.Collections.Stack stack;
   int nextStmt = 1;
 
-  // Use this for initialization
-  void Start () {
-
-  }
-  
-  // Update is called once per frame
-  void Update () {
-    
+  protected override void Start () {
+	base.Start();
   }
   
   public virtual void OnTick() {

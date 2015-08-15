@@ -6,7 +6,7 @@ public class ProtoDict : MonoBehaviour {
   //World statics
   public GameObject grid, backdrop;
   //Child objects
-  public GameObject doorBrace;
+  public GameObject doorBrace, infoText;
   //World objects
   public GameObject wall;
   

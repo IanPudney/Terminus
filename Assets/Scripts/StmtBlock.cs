@@ -7,9 +7,10 @@ public class StmtBlock : Statement {
   virtual public void Start () {
     Debug.Log ("Instantiating Placeholder");
     GameObject initialPlaceholder = Instantiate(ProtoDict.obj.placeholder, transform.position, transform.rotation) as GameObject;
-    initialPlaceholder.transform.parent = this.transform;
+    initialPlaceholder.transform.SetParent(this.transform);
     initialPlaceholder.GetComponent<Placeholder> ().OnReplace += ReplacePlaceholder;
     Layout ();
+    base.Start();
   }
   
   // Update is called once per frame
@@ -24,9 +25,9 @@ public class StmtBlock : Statement {
 
     ProgBlock uppermost = this;
     while (true) {
-      if(uppermost.transform.parent == null) break;
+      if(uppermost.transform.parent == UICanvas.obj.transform) break;
       ProgBlock parent = uppermost.transform.parent.gameObject.GetComponent<ProgBlock>();
-      if(parent == null) break;
+	  if(parent == UICanvas.obj.transform) break;
       uppermost = parent;
     }
     uppermost.Layout ();
@@ -38,6 +39,9 @@ public class StmtBlock : Statement {
     Transform last = null;
     foreach (Transform child in transform) {
       ProgBlock block = child.GetComponent<ProgBlock>();
+      if (!block) {
+      	continue;
+      }
       float height = block.Layout();
       Vector3 blockPosition = block.transform.localPosition;
       block.transform.localPosition = nextPosition;

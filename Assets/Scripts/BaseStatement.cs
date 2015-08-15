@@ -10,9 +10,8 @@ public class BaseStatement : StmtBlock {
     base.Start ();
   }
   
-  // Update is called once per frame
   void Update () {
-  
+	print (info.rectTransform.sizeDelta);
   }
 
   public override void OnTick() {

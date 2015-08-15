@@ -24,6 +24,8 @@ public class SpaceControl : MonoBehaviour {
   }
   
   void Start() {
+	UICanvas.obj.GetComponent<RectTransform>().sizeDelta = new Vector2(xSize, ySize);
+	
     //Build walls around the edge to handle undetermined behavior
     for (int x = 0; x < xSize; ++x) {
       GameObject a = Instantiate(ProtoDict.obj.wall,

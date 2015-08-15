@@ -1,21 +1,25 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class ProgBlock : MonoBehaviour {
+  protected Text info;
+  protected Image infoPanel;
+  
   // Use this for initialization
-  void Start () {
-  
+  protected virtual void Start () {
+  	Object textObj = GameObject.Instantiate(ProtoDict.obj.infoText);
+  	infoPanel = ((GameObject)textObj).GetComponent<Image>();
+  	infoPanel.transform.SetParent(transform);
+  	infoPanel.rectTransform.localPosition = new Vector2(0.75f, 0f);
+  	info = infoPanel.GetComponentInChildren<Text>();
+	infoPanel.rectTransform.sizeDelta = info.rectTransform.sizeDelta + Vector2.one;
   }
   
-  // Update is called once per frame
-  void Update () {
-  
-  }
-
   IEnumerator OnMouseDown()
   {
     //remove from parent
-    transform.parent = null;
+	transform.SetParent(UICanvas.obj.transform);
 
     Vector3 screenSpace = Camera.main.WorldToScreenPoint(transform.position);
     Vector3 offset = transform.position - Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, screenSpace.z));
