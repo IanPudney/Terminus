@@ -30,7 +30,7 @@ public class Placeholder : Statement {
       if(holder.transform.parent == targetTransform) {
         continue;
       }
-      float dist = Vector3.Distance(holder.transform.position, currentPos);
+      float dist = Vector2.Distance(holder.transform.position, currentPos);
       if (dist < minDist)
       {
         minDist = dist;

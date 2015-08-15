@@ -5,8 +5,10 @@ public class BaseStatement : StmtBlock {
 
   // Use this for initialization
   public override void Start () {
+	base.Start();
     TimeControl.OnStart += OnTick;
     stack = new System.Collections.Stack ();
+	label.text = "On <color=\"cyan\">Play</color>";
     base.Start ();
   }
   

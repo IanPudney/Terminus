@@ -43,13 +43,13 @@ public class ProgBlock : MonoBehaviour {
     if (nearest != null) {
       nearest.GetComponent<Placeholder> ().Replace (this);
     } else {
-		Rect blockRect = this.GetComponent<Rect>();
+		/*Rect blockRect = this.GetComponent<Rect>();
 		if(CodeCamera.obj.rect.Contains(blockRect.center + Vector2.up * (blockRect.height * 0.5f)) &&
 		   CodeCamera.obj.rect.Contains(blockRect.center - Vector2.up * (blockRect.height * 0.5f)) &&
 		   CodeCamera.obj.rect.Contains(blockRect.center + Vector2.right * (blockRect.width * 0.5f)) &&
 		   CodeCamera.obj.rect.Contains(blockRect.center - Vector2.right * (blockRect.width * 0.5f))) {
 			print ("Well shit");
-		}
+		}*/
     }
   }
   public virtual float Layout() {

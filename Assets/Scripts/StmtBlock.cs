@@ -3,13 +3,18 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class StmtBlock : Statement {
+	public GameObject indentationHint;
   virtual public void Start () {
-    Debug.Log ("Instantiating Placeholder");
+	base.Start ();
     GameObject initialPlaceholder = Instantiate(ProtoDict.obj.placeholder, transform.position, transform.rotation) as GameObject;
     initialPlaceholder.transform.SetParent(this.transform);
     initialPlaceholder.GetComponent<Placeholder> ().OnReplace += ReplacePlaceholder;
+
+	//indentationHint = Instantiate(ProtoDict.obj.indentationHint, transform.position, transform.rotation) as GameObject;
+	//indentationHint.transform.SetParent(this.transform);
+	//indentationHint.transform.localPosition = new Vector3(-2.5f, 0f, 0f);
+	//indentationHint.transform.localScale = new Vector3(1000, 1000, 1000);
     Layout ();
-    base.Start();
   }
   
   protected override void Update () {
@@ -26,7 +31,7 @@ public class StmtBlock : Statement {
   }
 
   public override float Layout() {
-    Vector3 nextPosition = new Vector3 (0.2f, -transform.localScale.y, 0);
+    Vector3 nextPosition = new Vector3 (0.3f, -transform.localScale.y, 0);
     Transform last = null;
     foreach (Transform child in transform) {
       ProgBlock block = child.GetComponent<ProgBlock>();
@@ -42,6 +47,11 @@ public class StmtBlock : Statement {
     //nextPosition = last.transform.localPosition;
     //nextPosition.x = 0.0f;
     //last.transform.localPosition = nextPosition;
+
+		//Vector3 iScale = indentationHint.transform.localScale;
+		//iScale.y = nextPosition.y - transform.localScale.y;
+		//indentationHint.transform.localScale = iScale;
+
     return -nextPosition.y;
   }
 }

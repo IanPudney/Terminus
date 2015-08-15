@@ -7,7 +7,6 @@ public class RotateRightStatement : Statement {
 	
 	protected override void Start() {
 		base.Start ();
-		info.text = "rotate ROBO" + (robotID + 1) + " rgt";
 	}	
 	
 	public override void OnTick() {
