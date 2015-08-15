@@ -5,6 +5,7 @@ public class MainBot : MonoBehaviour {
 	Vector3 StartLocation;
 	Vector3 StopLocation;
 	bool Active;
+	
 
 	// Use this for initialization
 	void Start () {
@@ -15,11 +16,15 @@ public class MainBot : MonoBehaviour {
 	
 	//Don't touch this ever.	
 	void OnEnable() {
+		TimeControl.TriggerMoveForward += MoveForwardAction;
+		TimeControl.OnStart += StartAction;
 		TimeControl.OnStop += StopAction;
 	}
 	
 	//Don't touch this ever.
 	void OnDisable() {
+		TimeControl.TriggerMoveForward -= MoveForwardAction;
+		TimeControl.OnStart -= StartAction;
 		TimeControl.OnStop -= StopAction;
 	}
 	
@@ -29,9 +34,21 @@ public class MainBot : MonoBehaviour {
 		}
 	}
 	
-	public void StartAction() {
+	public void MoveForwardAction() {
+		Vector3 travelVector = Vector3.up;
+		StopLocation = StartLocation + travelVector;
+		SpaceControl.obj.AttemptAction(travelVector,
+									   Mathf.FloorToInt (StopLocation.x),
+									   Mathf.FloorToInt(StopLocation.y));
 		Active = true;
-		StopLocation = StartLocation + Vector3.up;
+	}
+	
+	public void StartAction() {
+		Vector3 travelVector = SpaceControl.obj.ResolveAction(
+				StopLocation-StartLocation,
+				Mathf.FloorToInt(StopLocation.x),
+				Mathf.FloorToInt(StopLocation.y));
+		StopLocation = StartLocation + travelVector;
 	}
 	
 	public void StopAction() {
