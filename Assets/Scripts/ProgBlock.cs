@@ -6,14 +6,18 @@ public class ProgBlock : MonoBehaviour {
   protected Text info;
   protected Image infoPanel;
   
-  // Use this for initialization
   protected virtual void Start () {
   	Object textObj = GameObject.Instantiate(ProtoDict.obj.infoText);
   	infoPanel = ((GameObject)textObj).GetComponent<Image>();
   	infoPanel.transform.SetParent(transform);
   	infoPanel.rectTransform.localPosition = new Vector2(0.75f, 0f);
   	info = infoPanel.GetComponentInChildren<Text>();
-	infoPanel.rectTransform.sizeDelta = info.rectTransform.sizeDelta + Vector2.one;
+  	info.GetComponent<ContentSizeFitter>().SetLayoutHorizontal();
+  }
+  
+  protected virtual void Update() {
+	infoPanel.rectTransform.sizeDelta = info.rectTransform.sizeDelta * info.transform.localScale.x
+										+ new Vector2(0.5f, 0.5f);
   }
   
   IEnumerator OnMouseDown()

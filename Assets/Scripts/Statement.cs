@@ -8,6 +8,10 @@ public class Statement : ProgBlock {
   protected override void Start () {
 	base.Start();
   }
+	
+  protected override void Update () {
+  	base.Update();
+  }
   
   public virtual void OnTick() {
     Debug.Log ("Tick: " + GetType ().ToString ());

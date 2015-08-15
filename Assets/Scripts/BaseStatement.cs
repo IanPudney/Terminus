@@ -11,7 +11,7 @@ public class BaseStatement : StmtBlock {
   }
   
   void Update () {
-	print (info.rectTransform.sizeDelta);
+  	base.Update();
   }
 
   public override void OnTick() {

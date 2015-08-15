@@ -5,8 +5,13 @@ public class Placeholder : Statement {
   //this statement does nothing
 
   // Use this for initialization
-  void Start () {
+  protected override void Start () {
     placeholders.Add (this);
+    base.Start();
+  }
+  
+  protected override void Update() {
+  	base.Update ();
   }
 
   //a list of all of these objects
