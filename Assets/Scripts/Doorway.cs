@@ -44,19 +44,11 @@ public class Doorway : MonoBehaviour {
 	
 	//Don't touch this ever.	
 	void OnEnable() {
-		TimeControl.TriggerDoorOpen += DoorOpen;
-		TimeControl.TriggerDoorClose += DoorClose;
-		TimeControl.TriggerDoorToogle += DoorToogle;
-		TimeControl.OnStart += StartAction;
 		TimeControl.OnStop += StopAction;
 	}
 	
 	//Don't touch this ever.
 	void OnDisable() {
-		TimeControl.TriggerDoorOpen -= DoorOpen;
-		TimeControl.TriggerDoorClose -= DoorClose;
-		TimeControl.TriggerDoorToogle -= DoorToogle;
-		TimeControl.OnStart += StartAction;
 		TimeControl.OnStop -= StopAction;
 	}
 	

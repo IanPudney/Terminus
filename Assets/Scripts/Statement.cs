@@ -19,23 +19,29 @@ public class Statement : ProgBlock {
 		Debug.Log ("Tick: " + GetType ().ToString ());
 		if (CallNextChild() && ShouldPop()) {
 			TimeControl.OnStart -= OnTick;
+			TimeControl.OnTelegraph -= OnTelegraph;
 			if(stack.Count == 0) {
 				return; //we're done
 			}
 			Statement topStackStatement = ((Statement)stack.Peek ());
-			Debug.Log ("Popped " + topStackStatement.GetType().ToString());
 			topStackStatement.Dequeue ();
 		}
+	}
+
+	public virtual void OnTelegraph() {
+
 	}
 
 	public virtual void Queue() {
 		stack.Push (this);
 		TimeControl.OnStart -= OnTick;
+		TimeControl.OnTelegraph -= OnTelegraph;
 	}
 
 	public virtual void Dequeue() {
 		stack.Pop ();
 		TimeControl.OnStart += OnTick; 
+		TimeControl.OnTelegraph += OnTelegraph;
 	}	
 
 	public virtual bool CallNextChild() {
@@ -44,7 +50,6 @@ public class Statement : ProgBlock {
 			Statement[] children = gameObject.GetComponentsInChildren<Statement>(); 
 			if (nextStmt >= children.Length) {
 				nextStmt = 1;
-				Debug.Log (GetType ().ToString () + " CallNextChild returns true");
 				return true;
 			}
 			if (children [nextStmt] is Placeholder) {
@@ -53,9 +58,9 @@ public class Statement : ProgBlock {
 			}
 			Queue ();
 			TimeControl.OnStart += children[nextStmt].OnTick;
+			TimeControl.OnTelegraph += children[nextStmt].OnTelegraph;
 			children [nextStmt].stack = stack;
 			nextStmt ++;
-			Debug.Log (GetType ().ToString () + " CallNextChild returns false");
 			return false;
 		}
 	}

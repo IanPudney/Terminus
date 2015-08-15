@@ -20,22 +20,12 @@ public class MainBot : MonoBehaviour {
 		StartRotation = transform.rotation;
 		StopRotation = StartRotation;
 	}
-	
-	//Don't touch this ever.	
+
 	void OnEnable() {
-		TimeControl.TriggerMoveForward += MoveForwardAction;
-		TimeControl.TriggerRotateLeft += RotateLeftAction;
-		TimeControl.TriggerRotateRight += RotateRightAction;
-		TimeControl.OnStart += StartAction;
 		TimeControl.OnStop += StopAction;
 	}
-	
-	//Don't touch this ever.
+
 	void OnDisable() {
-		TimeControl.TriggerMoveForward -= MoveForwardAction;
-		TimeControl.TriggerRotateLeft -= RotateLeftAction;
-		TimeControl.TriggerRotateRight -= RotateRightAction;
-		TimeControl.OnStart -= StartAction;
 		TimeControl.OnStop -= StopAction;
 	}
 	

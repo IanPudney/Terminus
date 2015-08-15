@@ -5,11 +5,9 @@ public class Wall : MonoBehaviour {
 	const float PRIORITY = 5f;
 	
 	void OnEnable() {
-		TimeControl.TriggerWallReport += SendReport;
 	}
 		
 	void OnDisable() {
-		TimeControl.TriggerWallReport -= SendReport;
 	}
 	
 	public void SendReport() {

@@ -17,4 +17,9 @@ public class PrintStatement : Statement {
 		Debug.LogError (value);
 		base.OnTick ();
 	}
+
+	public override void OnTelegraph() {
+		Debug.LogError ("Telegraph: " + value);
+		base.OnTelegraph ();
+	}
 }

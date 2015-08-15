@@ -18,4 +18,9 @@ public class MoveStatement : Statement {
 		robot.GetComponent<MainBot> ().StartAction ();
 		base.OnTick ();
 	}
+
+	public override void OnTelegraph() {
+		robot.GetComponent<MainBot> ().MoveForwardAction ();
+		base.OnTelegraph ();
+	}
 }
