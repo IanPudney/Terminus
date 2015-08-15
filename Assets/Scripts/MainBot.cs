@@ -50,16 +50,16 @@ public class MainBot : MonoBehaviour {
 	public void RotateLeftAction() {
 		StopRotation = transform.rotation * Quaternion.Euler(new Vector3(0, 0, 90f));
 		SpaceControl.obj.AttemptAction(PRIORITY * Vector3.forward,
-																	 Mathf.FloorToInt(transform.position.x),
-																	 Mathf.FloorToInt(transform.position.y));
+									 Mathf.FloorToInt(transform.position.x),
+									 Mathf.FloorToInt(transform.position.y));
 		Active = true;
 	}
 	
 	public void RotateRightAction() {
 		StopRotation = transform.rotation * Quaternion.Euler(new Vector3(0, 0, -90f));
 		SpaceControl.obj.AttemptAction(PRIORITY * Vector3.forward,
-																	 Mathf.FloorToInt(transform.position.x),
-																	 Mathf.FloorToInt(transform.position.y));
+									 Mathf.FloorToInt(transform.position.x),
+									 Mathf.FloorToInt(transform.position.y));
 		Active = true;
 	}
 	
@@ -80,7 +80,6 @@ public class MainBot : MonoBehaviour {
 	}
 	
 	void OnCollisionEnter(Collision other) {
-		print ("fuck this shit");
 		Doorway door = other.gameObject.GetComponent<Doorway>();
 		MainBot bot = other.gameObject.GetComponent<MainBot>();
 		if (door) {

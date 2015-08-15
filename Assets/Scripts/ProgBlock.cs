@@ -23,7 +23,7 @@ public class ProgBlock : MonoBehaviour {
   IEnumerator OnMouseDown()
   {
     //remove from parent
-		ProgBlock oldParent = transform.parent.gameObject.GetComponent<ProgBlock> ();
+	ProgBlock oldParent = transform.parent.gameObject.GetComponent<ProgBlock> ();
 
 	transform.SetParent(UICanvas.obj.transform);
 
@@ -47,6 +47,14 @@ public class ProgBlock : MonoBehaviour {
     Placeholder nearest = Placeholder.GetClosestPlaceholder (transform);
     if (nearest != null) {
       nearest.GetComponent<Placeholder> ().Replace (this);
+    } else {
+		Rect blockRect = this.GetComponent<Rect>();
+		if(CodeCamera.obj.rect.Contains(blockRect.center + Vector2.up * (blockRect.height * 0.5f)) &&
+		   CodeCamera.obj.rect.Contains(blockRect.center - Vector2.up * (blockRect.height * 0.5f)) &&
+		   CodeCamera.obj.rect.Contains(blockRect.center + Vector2.right * (blockRect.width * 0.5f)) &&
+		   CodeCamera.obj.rect.Contains(blockRect.center - Vector2.right * (blockRect.width * 0.5f))) {
+			print ("Well shit");
+		}
     }
   }
   public virtual float Layout() {
