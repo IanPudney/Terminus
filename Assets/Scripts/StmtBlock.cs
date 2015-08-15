@@ -19,8 +19,8 @@ public class StmtBlock : Statement {
   void ReplacePlaceholder(Placeholder ps, ProgBlock pg) {
     //TODO: allow middle placeholders
     ps.transform.parent = null;
-    pg.transform.parent = this.transform;
-    ps.transform.parent = this.transform;
+    pg.transform.SetParent(this.transform);
+    ps.transform.SetParent(this.transform);
 
     ProgBlock uppermost = this;
     while (true) {

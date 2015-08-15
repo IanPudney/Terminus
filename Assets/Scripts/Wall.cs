@@ -1,8 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+//THIS SCRIPT HAS BEEN DEPRECATED.
+
+//NOTHING TO SEE HERE.
+
 public class Wall : MonoBehaviour {
-  const float PRIORITY = 5f;
+  public const float PRIORITY = 5f;
   
   void OnEnable() {
     TimeControl.OnTelegraph += SendReport;
