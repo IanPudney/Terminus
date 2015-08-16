@@ -2770,10 +2770,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95c5e233c5135d84c927e102f451717e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boundToParent: 0
+  boundToParent: 1
   blockBank: {fileID: 0}
   indentationHint: {fileID: 0}
-  hasPlaceholder: 1
+  hasPlaceholder: 0
 --- !u!1001 &999803659
 Prefab:
   m_ObjectHideFlags: 0
@@ -4455,10 +4455,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95c5e233c5135d84c927e102f451717e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boundToParent: 0
+  boundToParent: 1
   blockBank: {fileID: 0}
   indentationHint: {fileID: 0}
-  hasPlaceholder: 1
+  hasPlaceholder: 0
 --- !u!1001 &1697600699
 Prefab:
   m_ObjectHideFlags: 0
