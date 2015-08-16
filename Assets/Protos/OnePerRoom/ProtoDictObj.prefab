@@ -55,7 +55,7 @@ MonoBehaviour:
   grid: {fileID: 126262, guid: dcc7ab54be1003648bb1c78aae85491c, type: 2}
   backdrop: {fileID: 173350, guid: 3ab87e4b37216b948a9ca3c7fa5fa7b9, type: 2}
   doorBrace: {fileID: 167896, guid: c93d4481d9ccb9345bc7b3fbffcc9133, type: 2}
-  indentationHint: {fileID: 0}
+  indentationHint: {fileID: 165802, guid: 3c8de1775d6dec74cb5ba077f1d25eb5, type: 2}
   label: {fileID: 11482620, guid: 68798b1bb35ce9a4ab9f98ec0ab1d9e3, type: 2}
   wall: {fileID: 167600, guid: f0ebe5b5ebfc0fa46b881547f47296aa, type: 2}
   placeholder: {fileID: 138894, guid: e20894488b15c7e44a8bc41c50c0794b, type: 2}

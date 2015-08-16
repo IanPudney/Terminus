@@ -7,12 +7,12 @@ public class ProgBlock : MonoBehaviour {
   
   protected virtual void Start () {
 		label = GameObject.Instantiate(ProtoDict.obj.label) as Text;
-		label.transform.parent = transform;
+		label.transform.SetParent(transform);
 		label.transform.localPosition = new Vector3(0, 0, -2);
-		label.transform.localScale = new Vector3(0.02f/transform.localScale.x, 
-		                                     0.02f/transform.localScale.y, 
-		                                     0.02f/transform.localScale.z);
 		label.fontSize = 25;
+		label.transform.localScale = new Vector3(0.02f, 
+		                                     0.02f, 
+		                                     0.02f);
   }
   
   protected virtual void Update() {

@@ -49,14 +49,8 @@ public class StmtBlock : Statement {
     //nextPosition = last.transform.localPosition;
     //nextPosition.x = 0.0f;
     //last.transform.localPosition = nextPosition;
-
-		Vector3 iScale = indentationHint.transform.localScale;
-		iScale.y = nextPosition.y + transform.localScale.y;
-		indentationHint.transform.localScale = iScale;
-
-		Vector3 iPos = indentationHint.transform.localPosition;
-		iPos.y = +nextPosition.y / 2;
-		indentationHint.transform.localPosition = iPos;
+		indentationHint.transform.localScale = Vector3.one;
+		indentationHint.transform.localPosition = new Vector3(-2, -1, 0);
 
     return -nextPosition.y;
   }
