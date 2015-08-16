@@ -11,6 +11,9 @@ public class MainBot : MonoBehaviour {
 	public int ID;
 	[HideInInspector]
 	bool dead = false;
+	
+	Vector3 DefaultLocation;
+	Quaternion DefaultRotation;
 		
 	const float PRIORITY = 1f;
 
@@ -18,10 +21,12 @@ public class MainBot : MonoBehaviour {
 	void Start () {
 		StartLocation = transform.position;
 		StopLocation = StartLocation;
+		DefaultLocation = StartLocation;
 		Active = false;
 		DoorVector = Vector3.zero;
 		StartRotation = transform.rotation;
 		StopRotation = StartRotation;
+		DefaultRotation = StartRotation;
 		ID = ObjectDict.obj.AddToRobotsDict(this);
 	}
 
@@ -122,5 +127,19 @@ public class MainBot : MonoBehaviour {
 	public void FallIntoVoid() {
 		dead = true;
 		TimeControl.OnStop -= StopAction;
+	}
+	
+	public void Reset() {
+		dead = false;
+		StartLocation = DefaultLocation;
+		StopLocation = DefaultLocation;
+		transform.position = DefaultLocation;
+		StartRotation = DefaultRotation;
+		StopRotation = DefaultRotation;
+		transform.rotation = DefaultRotation;
+		Active = false;
+		DoorVector = Vector3.zero;
+		transform.localScale = Vector3.one;
+		TimeControl.OnStop += StopAction;
 	}
 }

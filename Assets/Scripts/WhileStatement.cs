@@ -20,5 +20,8 @@ public class WhileStatement : StmtBlock {
     return false;
   }
 
-
+	public override void Reset() {
+		base.Reset();
+		
+	}
 }

@@ -8,7 +8,7 @@ public class BaseStatement : StmtBlock {
 	base.Start();
 		TimeControl.OnStart += OnTick;
 		stack = new System.Collections.Stack ();
-	label.text = "On <color=\"cyan\">Play</color>";
+		label.text = "On <color=\"cyan\">Play</color>";
 	}
 	
 	void Update () {
@@ -17,5 +17,11 @@ public class BaseStatement : StmtBlock {
 
 	public override void OnTick() {
 		base.OnTick ();
+	}
+	
+	public override void Reset() {
+		base.Reset();
+		TimeControl.OnStart += OnTick;
+		TimeControl.OnTelegraph += OnTelegraph;
 	}
 }

@@ -115,4 +115,11 @@ public class Statement : ProgBlock {
 		
 		return -nextPosition.y;
 	}
+	
+	public override void Reset () {
+		base.Reset ();
+		TimeControl.OnStart -= OnTick;
+		TimeControl.OnTelegraph -= OnTelegraph;
+		nextStmt = 0;
+	}
 }

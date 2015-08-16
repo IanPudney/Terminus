@@ -36,5 +36,10 @@ public class PhysicalButton : MonoBehaviour {
 			isTriggered = false;
 		}
 	}
+	
+	public void Reset() {
+		TimeControl.OnStart -= statement.OnTick;
+		TimeControl.OnTelegraph -= statement.OnTelegraph;
+	}
 }
 

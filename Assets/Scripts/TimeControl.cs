@@ -18,6 +18,8 @@ public class TimeControl : MonoBehaviour {
 	static public int tick = 0;
 	bool isPlaying = false;
 	
+	GameObject StartButton = null;
+	
 	//Handles time controls.
 	float time_since_update = 0;
 	//public float transition_time = 0.5f;
@@ -86,11 +88,33 @@ public class TimeControl : MonoBehaviour {
 		foreach (ProgBlock block in FindObjectsOfType<ProgBlock>()) {
 			block.boundToParent = true;
 		}
+		if (StartButton == null) {
+			StartButton = GameObject.Find ("StartButton");
+		}
+		StartButton.GetComponent<Button>().enabled = false;
+		StartButton.GetComponentInChildren<CanvasRenderer>().SetAlpha(0);
+		StartButton.GetComponentInChildren<Text>().color = Color.clear;
+		
 	}
-	public void Pause() {
-		isPlaying = false;
+	public void CallReset() {
+		foreach (ProgBlock block in FindObjectsOfType<ProgBlock>()) {
+			block.BroadcastMessage("Reset");
+		}
+		foreach (MainBot bot in FindObjectsOfType<MainBot>()) {
+			bot.BroadcastMessage("Reset");
+		}
+		foreach (Doorway door in FindObjectsOfType<Doorway>()) {
+			door.BroadcastMessage("Reset");
+		}
+		gameObject.BroadcastMessage("Reset");
 	}
 	public void Reset() {
+		isPlaying = false;
+		StartButton.GetComponent<Button>().enabled = true;
+		StartButton.GetComponentInChildren<CanvasRenderer>().SetAlpha(1);
+		StartButton.GetComponentInChildren<Text>().color = Color.black;
+	}
+	public void Clear() {
 		Application.LoadLevel (Application.loadedLevelName);
 	}
 }

@@ -9,6 +9,7 @@ public class Placeholder : Statement {
 	// Use this for initialization
 	protected override void Start () {
 		base.Start();
+		GetComponent<ParticleSystem>().enableEmission = false;
 	}
 	
 	protected override void Update() {
@@ -22,8 +23,7 @@ public class Placeholder : Statement {
 		//Vector3 currentPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 		Bounds targetBounds = targetTransform.GetComponent<BoxCollider>().bounds;
 		
-		foreach (Object obj in FindObjectsOfType<Placeholder>()) {
-			Placeholder holder = (Placeholder) obj;
+		foreach (Placeholder holder in FindObjectsOfType<Placeholder>()) {
 			Bounds objBounds = holder.GetComponent<BoxCollider>().bounds;
 			//skip if member of self
 			if(holder.transform.parent == targetTransform) {
