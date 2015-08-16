@@ -43,6 +43,7 @@ public class StmtBlock : Statement {
   public override float Layout() {
   	//Position immediately beneath
     Vector3 nextPosition = new Vector3 (1f, -1f, 0);
+    float totalHeight = 0;
     foreach (Transform child in transform) {
       ProgBlock block = child.GetComponent<ProgBlock>();
       if (!block) {
@@ -52,12 +53,13 @@ public class StmtBlock : Statement {
       Vector3 blockPosition = block.transform.localPosition;
       block.transform.localPosition = nextPosition;
       nextPosition.y -= height;
+      totalHeight += height;
     }
 	if(indentationHint == null) {
 			InstantiateHint();
 		}
-	indentationHint.transform.localScale = Vector3.one;
-	indentationHint.transform.localPosition = new Vector3(-2f, -1f, 0);
+	indentationHint.transform.localScale = new Vector3(1f, totalHeight, 1f);
+	indentationHint.transform.localPosition = new Vector3(-2f, (-totalHeight / 2f) - 0.5f, 0);
 
     return -nextPosition.y;
   }
