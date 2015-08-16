@@ -10,7 +10,7 @@ GameObject:
   - 4: {fileID: 452136}
   - 198: {fileID: 19862966}
   - 199: {fileID: 19982808}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: DustStorm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
