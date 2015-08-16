@@ -56,7 +56,7 @@ public class TimeControl : MonoBehaviour {
 	
 	void Update () {
 		if (!isPlaying) {
-		return;
+			return;
 		}
 		slider_rate = 1f - FindObjectOfType<Slider>().value;
 		time_since_update += Time.deltaTime	;
@@ -109,6 +109,7 @@ public class TimeControl : MonoBehaviour {
 		gameObject.BroadcastMessage("Reset");
 	}
 	public void Reset() {
+		print ("reset");
 		isPlaying = false;
 		StartButton.GetComponent<Button>().enabled = true;
 		StartButton.GetComponentInChildren<CanvasRenderer>().SetAlpha(1);
