@@ -2,6 +2,7 @@
 using System.Collections;
 
 public class Doorway : MonoBehaviour {
+	public int doorNumber;
 	Vector3 OpenLocation;
 	Vector3 ClosedLocation;
 	bool Active;
@@ -18,6 +19,8 @@ public class Doorway : MonoBehaviour {
 	
 	// Use this for initialization
 	void Start () {
+		GetComponentInChildren<TextMesh>().text = doorNumber.ToString ();
+
 		OpenLocation = transform.position;
 		ClosedLocation = OpenLocation + CloseDirection;
 		if (CloseDirection == Vector3.up) {

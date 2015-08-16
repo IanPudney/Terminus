@@ -14,7 +14,7 @@ public class StmtBlock : Statement {
 	virtual public void InstantiateHint() {
 		indentationHint = Instantiate(ProtoDict.obj.indentationHint, transform.position, transform.rotation) as GameObject;
 		indentationHint.transform.SetParent(this.transform);
-		indentationHint.transform.localPosition = new Vector3(-2f, 0f, 0f);
+		indentationHint.transform.localPosition = new Vector3(-2.5f, 0f, 0f);
 		indentationHint.transform.localScale = Vector3.one;
 		indentationHint.GetComponent<Image>().color = GetComponent<Image>().color;
 	}
@@ -64,7 +64,7 @@ public class StmtBlock : Statement {
 		InstantiateHint();
 	}
 	indentationHint.transform.localScale = new Vector3(1f, totalHeight, 1f);
-	indentationHint.transform.localPosition = new Vector3(-2f, (-totalHeight / 2f) - 0.5f, 0);
+	indentationHint.transform.localPosition = new Vector3(-2.5f, (-totalHeight / 2f) - 0.5f, 0);
 
 	return -nextPosition.y;
 	}
