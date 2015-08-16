@@ -46,15 +46,36 @@ public class ProgBlock : MonoBehaviour {
     //find the nearest placeholder and replace it
     Placeholder nearest = Placeholder.GetClosestPlaceholder (transform);
     if (nearest != null) {
-      nearest.GetComponent<Placeholder> ().Replace (this);
+    	nearest.GetComponent<Placeholder> ().Replace (this);
     } else {
-		Rect blockRect = this.GetComponent<Rect>();
-		if(CodeCamera.obj.rect.Contains(blockRect.center + Vector2.up * (blockRect.height * 0.5f)) &&
+		RectTransform blockRect = GetComponent<RectTransform>();
+		Vector3 blockRectCenter = transform.TransformPoint(transform.position);
+		float blockMinX = blockRectCenter.x - blockRect.rect.width;
+		float blockMaxX = blockRectCenter.x + blockRect.rect.width;
+		float blockMinY = blockRectCenter.y - blockRect.rect.height;
+		float blockMaxY = blockRectCenter.y + blockRect.rect.height;
+		print ("xc" + CameraExtensions.BoundsMin(CodeCamera.obj).x + " " + CameraExtensions.BoundsMax(CodeCamera.obj).x);
+		print ("yc" + CameraExtensions.BoundsMin(CodeCamera.obj).y + " " + CameraExtensions.BoundsMax(CodeCamera.obj).y);
+		
+		
+		print ("xb" + blockMinX + " " + blockMaxX);
+		print ("yb" + blockMinY + " " + blockMaxY);
+		/*if (blockMinX > CameraExtensions.BoundsMax(CodeCamera.obj).x) {
+			print ("Too right");
+		} else if (blockMaxX < CameraExtensions.BoundsMin(CodeCamera.obj).x) {
+			print ("Too left" + blockMaxX + " " + CameraExtensions.BoundsMin(CodeCamera.obj).x);
+		}
+		if (blockMinY > CameraExtensions.BoundsMax(CodeCamera.obj).y) {
+			print ("Too high");
+		} else if (blockMaxY < CameraExtensions.BoundsMin(CodeCamera.obj).y) {
+			print ("Too low");
+		}*/
+		/*if(
 		   CodeCamera.obj.rect.Contains(blockRect.center - Vector2.up * (blockRect.height * 0.5f)) &&
 		   CodeCamera.obj.rect.Contains(blockRect.center + Vector2.right * (blockRect.width * 0.5f)) &&
 		   CodeCamera.obj.rect.Contains(blockRect.center - Vector2.right * (blockRect.width * 0.5f))) {
 			print ("Well shit");
-		}
+		}*/
     }
   }
   public virtual float Layout() {

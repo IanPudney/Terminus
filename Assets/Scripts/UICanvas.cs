@@ -2,8 +2,8 @@
 using System.Collections;
 
 public class UICanvas : MonoBehaviour {
-	public static UICanvas obj;
+	public static RectTransform obj;
 	void Awake() {
-		obj = this;
+		obj = GetComponent<RectTransform>();
 	}
 }
