@@ -1,12 +1,24 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class Statement : ProgBlock {
+
   protected System.Collections.Stack stack;
   int nextStmt = 1;
+	Color defaultColor;
+
+	protected static Statement highlighted = null;
+  protected void Highlight() {
+			GetComponent<Image>().color = defaultColor * 0.5f;
+	}
+  protected void Unhighlight() {
+			GetComponent<Image>().color = defaultColor;
+	}
 
   protected override void Start () {
 	base.Start();
+	defaultColor = GetComponent<Image>().color;
   }
 	
   protected override void Update () {
@@ -15,6 +27,12 @@ public class Statement : ProgBlock {
   
   public virtual void OnTick() {
     Debug.Log ("Tick: " + GetType ().ToString ());
+	if(highlighted != null) {
+			highlighted.Unhighlight ();
+		}
+		highlighted = this;
+		Highlight();
+	
     if (CallNextChild() && ShouldPop()) {
       TimeControl.OnStart -= OnTick;
       TimeControl.OnTelegraph -= OnTelegraph;
@@ -33,7 +51,7 @@ public class Statement : ProgBlock {
   public virtual void Queue() {
     stack.Push (this);
     TimeControl.OnStart -= OnTick;
-    TimeControl.OnTelegraph -= OnTelegraph;
+	TimeControl.OnTelegraph -= OnTelegraph;
   }
 
   public virtual void Dequeue() {
