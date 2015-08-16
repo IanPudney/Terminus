@@ -29,6 +29,10 @@ public class ProgBlock : MonoBehaviour {
   
   public IEnumerator OnMouseDown()
   {
+		Vector3 origPos = transform.position;
+		float origZ = origPos.z;
+		origPos.z = 100;
+		transform.position = origPos;
   	if (boundToParent) {
   		return false;
   	}
@@ -50,6 +54,10 @@ public class ProgBlock : MonoBehaviour {
       transform.position = curPosition;
       yield return null;
     }
+		origPos = transform.position;
+		origPos.z = origZ;
+		transform.position = origPos;
+
     //find the nearest placeholder and replace it
     Placeholder nearest = Placeholder.GetClosestPlaceholder (transform);
     if (nearest != null) {
