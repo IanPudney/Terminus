@@ -7,11 +7,19 @@ EditorBuildSettings:
   m_Scenes:
   - enabled: 1
     path: Assets/Level1.unity
-  - enabled: 1
+  - enabled: 0
     path: Assets/Level2.unity
   - enabled: 1
     path: Assets/Level3.unity
-  - enabled: 1
+  - enabled: 0
     path: Assets/Level4.unity
   - enabled: 1
     path: Assets/Level5.unity
+  - enabled: 1
+    path: Assets/Title.unity
+  - enabled: 1
+    path: Assets/Level7.unity
+  - enabled: 1
+    path: Assets/RotateButton.unity
+  - enabled: 1
+    path: Assets/TurnAround.unity
