@@ -22,3 +22,5 @@ sysinfo.txt
 
 
 *.sln*
+*.exe
+*_data/

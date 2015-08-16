@@ -19,13 +19,15 @@ public class LevelTransition : MonoBehaviour {
 	}
 	
 	string LevelMap() {
-		switch (Application.loadedLevelName) {
+		/*switch (Application.loadedLevelName) {
 			case "Level1": return "Level2";
 			case "Level2": return "Level3";
 			case "Level3": return "Level4";
 			case "Level4": return "Level5";
 			case "Level5": return "Level2";
 		}
+		return "";*/
+		Application.LoadLevel ("Title");
 		return "";
 	}
 }
