@@ -3,11 +3,26 @@ using System.Collections;
 
 public class RotateRightStatement : Statement {
 	
-	public int robotID = 0;
+	int robotID;
+	public int startRobotID;
+	public int RobotID
+	{
+		get
+		{
+			return robotID;
+		}
+		set
+		{
+			robotID = value;
+			label.text = "Rotate <color=\"cyan\">R" + robotID.ToString() + "</color> Left";
+			Debug.Log("Set label to " + label.text);
+		}
+	}
 	
 	protected override void Start() {
 		base.Start ();
-	}	
+		RobotID = startRobotID;
+	}
 	
 	public override void OnTick() {
 		Debug.Log ("Rotating robot");
