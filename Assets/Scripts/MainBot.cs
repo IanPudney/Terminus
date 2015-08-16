@@ -100,7 +100,8 @@ public class MainBot : MonoBehaviour {
 	}
 	
 	void OnCollisionEnter(Collision other) {
-		print("Hello" + other.transform.name);
+		print("Collision with " + other.transform.name);
+		return;
 		Doorway door = other.gameObject.GetComponent<Doorway>();
 		MainBot bot = other.gameObject.GetComponent<MainBot>();
 		if (door && door.state == Doorway.State.Open) {
@@ -117,7 +118,7 @@ public class MainBot : MonoBehaviour {
 
 	public bool IsOnPaint() {
 		foreach (Paint paint in ObjectDict.obj.paints) {
-			if(Vector3.Distance(paint.transform.position, transform.position) < 0.1f) {
+			if(Vector2.Distance(paint.transform.position, transform.position) < 0.1f) {
 				return true;
 			}
 		}
