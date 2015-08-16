@@ -8,6 +8,7 @@ public class ProtoDict : MonoBehaviour {
   //Child objects
   public GameObject doorBrace, indentationHint;
 	public Text label;
+	public StmtBlock block;
   //World objects
   public GameObject wall;
   

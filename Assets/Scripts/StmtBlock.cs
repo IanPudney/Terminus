@@ -33,23 +33,11 @@ public class StmtBlock : Statement {
 		RecursiveLayout ();
   }
 
-	//RETURNS: Total height of object with all children.
-  public override float Layout() {
-  	//Position immediately beneath
-    Vector3 nextPosition = new Vector3 (1f, -1f, 0);
-    foreach (Transform child in transform) {
-      ProgBlock block = child.GetComponent<ProgBlock>();
-      if (!block) {
-      	continue;
-      }
-      float height = block.Layout();
-      Vector3 blockPosition = block.transform.localPosition;
-      block.transform.localPosition = nextPosition;
-      nextPosition.y -= height;
-    }
-	indentationHint.transform.localScale = Vector3.one;
-	indentationHint.transform.localPosition = new Vector3(-2f, -1f, 0);
+	public override float Layout() {
+		float result = base.Layout ();
+		indentationHint.transform.localScale = Vector3.one;
+		indentationHint.transform.localPosition = new Vector3(-2f, -1f, 0);
+		return result;
+	}
 
-    return -nextPosition.y;
-  }
 }

@@ -86,4 +86,22 @@ public class Statement : ProgBlock {
     return true;
   }
 
+	//RETURNS: Total height of object with all children.
+	public override float Layout() {
+		//Position immediately beneath
+		Vector3 nextPosition = new Vector3 (1f, -1f, 0);
+		foreach (Transform child in transform) {
+			ProgBlock block = child.GetComponent<ProgBlock>();
+			if (!block) {
+				continue;
+			}
+			float height = block.Layout();
+			Vector3 blockPosition = block.transform.localPosition;
+			block.transform.localPosition = nextPosition;
+			nextPosition.y -= height;
+		}
+		
+		return -nextPosition.y;
+	}
+
 }

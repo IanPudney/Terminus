@@ -57,6 +57,7 @@ MonoBehaviour:
   doorBrace: {fileID: 167896, guid: c93d4481d9ccb9345bc7b3fbffcc9133, type: 2}
   indentationHint: {fileID: 165802, guid: 3c8de1775d6dec74cb5ba077f1d25eb5, type: 2}
   label: {fileID: 11482620, guid: 68798b1bb35ce9a4ab9f98ec0ab1d9e3, type: 2}
+  block: {fileID: 11418588, guid: 181ba5c2493c7fe468601ec0077a6497, type: 2}
   wall: {fileID: 167600, guid: f0ebe5b5ebfc0fa46b881547f47296aa, type: 2}
   placeholder: {fileID: 138894, guid: e20894488b15c7e44a8bc41c50c0794b, type: 2}
 --- !u!1001 &100100000
