@@ -2820,23 +2820,23 @@ Prefab:
     m_Modifications:
     - target: {fileID: 22493478, guid: 728ca354d82d718409d9f28970097900, type: 2}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 22493478, guid: 728ca354d82d718409d9f28970097900, type: 2}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 22470710, guid: 728ca354d82d718409d9f28970097900, type: 2}
       propertyPath: m_AnchorMin.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 22470710, guid: 728ca354d82d718409d9f28970097900, type: 2}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 22470710, guid: 728ca354d82d718409d9f28970097900, type: 2}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 22400182, guid: 728ca354d82d718409d9f28970097900, type: 2}
       propertyPath: m_LocalPosition.x
@@ -2909,6 +2909,14 @@ Prefab:
     - target: {fileID: 22400182, guid: 728ca354d82d718409d9f28970097900, type: 2}
       propertyPath: m_Pivot.y
       value: .5
+      objectReference: {fileID: 0}
+    - target: {fileID: 22400182, guid: 728ca354d82d718409d9f28970097900, type: 2}
+      propertyPath: m_LocalScale.x
+      value: .0500000007
+      objectReference: {fileID: 0}
+    - target: {fileID: 22400182, guid: 728ca354d82d718409d9f28970097900, type: 2}
+      propertyPath: m_LocalScale.y
+      value: .0500000007
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 728ca354d82d718409d9f28970097900, type: 2}
