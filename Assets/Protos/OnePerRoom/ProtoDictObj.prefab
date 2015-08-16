@@ -60,6 +60,16 @@ MonoBehaviour:
   block: {fileID: 11418588, guid: 181ba5c2493c7fe468601ec0077a6497, type: 2}
   wall: {fileID: 167600, guid: f0ebe5b5ebfc0fa46b881547f47296aa, type: 2}
   placeholder: {fileID: 138894, guid: e20894488b15c7e44a8bc41c50c0794b, type: 2}
+  robotMove: {fileID: 134664, guid: 41d6942d6d410d74e80d7fa81b2b5338, type: 2}
+  robotLeft: {fileID: 140728, guid: ab470f8fcd8ae0f4d966c1cf959d8ee6, type: 2}
+  robotRight: {fileID: 172916, guid: 1e117f796881e264797de08009936ae3, type: 2}
+  doorOpen: {fileID: 175060, guid: d64745f981c932c46a30a8b5832336fc, type: 2}
+  doorClose: {fileID: 103042, guid: 50b70bb9660de6e42a4ebdc2bc751e7f, type: 2}
+  doorToggle: {fileID: 199040, guid: 6e7d8a91c38cd4b44aa464bff2c59591, type: 2}
+  whileBlock: {fileID: 160950, guid: 271de494d92e4f947aebf40eb6f312e8, type: 2}
+  ifElse: {fileID: 179232, guid: 9c22e49bac00b654389e48df86bcce41, type: 2}
+  entryPoint: {fileID: 171106, guid: 1e90e490bbf8bd541b44f5d493c81f65, type: 2}
+  triggerPoint: {fileID: 187050, guid: 4711c7f21d7224e4192a5b70aa508403, type: 2}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

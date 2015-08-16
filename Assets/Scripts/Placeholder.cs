@@ -18,13 +18,11 @@ public class Placeholder : Statement {
   static public System.Collections.ArrayList placeholders = new ArrayList();
 
   //get the nearest one of these
-  static public Placeholder GetClosestPlaceholder(Transform targetTransform)
-  {
+  static public Placeholder GetClosestPlaceholder(Transform targetTransform) {
     Placeholder pMin = null;
     float minDist = float.MaxValue;
     Vector3 currentPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-    foreach (Object obj in placeholders)
-    {
+    foreach (Object obj in placeholders) {
       Placeholder holder = (Placeholder) obj;
 		Bounds objBounds = holder.GetComponent<BoxCollider>().bounds;
       //skip if member of self
@@ -40,14 +38,9 @@ public class Placeholder : Statement {
       {
         minDist = dist;
         pMin = holder;
-      } else {
-      	print (currentPos.x + "<" + objBounds.max.x + "/// " +
-		    currentPos.y + " <" + objBounds.max.y + "/// " +
-  			currentPos.x + ">" + objBounds.min.x + "/// " +
-  			currentPos.y + "> " + objBounds.min.y);
       }
     }
-    return pMin;
+	return pMin;
   }
 
   public delegate void OnReplaceDelegate(Placeholder pl, ProgBlock pg);
