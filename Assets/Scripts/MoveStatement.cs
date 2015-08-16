@@ -24,9 +24,9 @@ public class MoveStatement : Statement {
 	RobotID = startRobotID;
   }
 
-  public override void OnTick() {
+  public override void OnTick() {	
+	base.OnTick ();
     ObjectDict.obj.robots[robotID].StartAction ();
-    base.OnTick ();
   }
 
   public override void OnTelegraph() {

@@ -13,7 +13,7 @@ public class TimeControl : MonoBehaviour {
 	public static event StopAction OnStop;
 	
 	static public TimeControl obj;
-	public int tick = 0;
+	static public int tick = 0;
 	bool isPlaying = false;
 	
 	//Handles time controls.
