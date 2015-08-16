@@ -25,8 +25,8 @@ public class SpaceControl : MonoBehaviour {
   }
   
   void Start() {
-	UICanvas.obj.GetComponent<RectTransform>().sizeDelta = new Vector2(xSize, ySize);
-	FindObjectOfType<Slider>().transform.position = new Vector3(xSize * 0.5f, ySize + 0.4f, -3f);
+	//UICanvas.obj.GetComponent<RectTransform>().sizeDelta = new Vector2(xSize, ySize);
+	//FindObjectOfType<Slider>().transform.position = new Vector3(xSize * 0.5f, ySize + 0.4f, -3f);
 	
     //Build walls around the edge to handle undetermined behavior
     for (int x = 0; x < xSize; ++x) {
