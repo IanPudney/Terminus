@@ -7,7 +7,6 @@ public class Placeholder : Statement {
 
 	// Use this for initialization
 	protected override void Start () {
-		placeholders.Add (this);
 		base.Start();
 	}
 	
@@ -15,15 +14,12 @@ public class Placeholder : Statement {
 		base.Update ();
 	}
 
-	//a list of all of these objects
-	static public System.Collections.ArrayList placeholders = new ArrayList();
-
 	//get the nearest one of these
 	static public Placeholder GetClosestPlaceholder(Transform targetTransform) {
 		Placeholder pMin = null;
 		float minDist = float.MaxValue;
 		Vector3 currentPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-		foreach (Object obj in placeholders) {
+		foreach (Object obj in FindObjectsOfType<Placeholder>()) {
 			Placeholder holder = (Placeholder) obj;
 			Bounds objBounds = holder.GetComponent<BoxCollider>().bounds;
 			//skip if member of self
@@ -40,14 +36,11 @@ public class Placeholder : Statement {
 				pMin = holder;
 			}
 		}
-		print ("gotem");
 		foreach (BlockBank bank in FindObjectsOfType<BlockBank>()) {
 			//skip if wrong bank
-			print ("wow");
 			if(bank != targetTransform.GetComponent<ProgBlock>().blockBank) {
 				continue;
 			}
-			print ("yes");
 			//Check children, etc
 			Bounds bankBounds = bank.GetComponent<BoxCollider>().bounds;
 			float dist = Vector2.Distance(bank.transform.position, currentPos);

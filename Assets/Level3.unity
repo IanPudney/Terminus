@@ -1721,6 +1721,7 @@ MonoBehaviour:
   boundToParent: 0
   blockBank: {fileID: 0}
   indentationHint: {fileID: 0}
+  hasPlaceholder: 1
 --- !u!4 &1225297318 stripped
 Transform:
   m_PrefabParentObject: {fileID: 403400, guid: f0ebe5b5ebfc0fa46b881547f47296aa, type: 2}
