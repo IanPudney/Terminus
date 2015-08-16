@@ -25,7 +25,7 @@ public class StmtBlock : Statement {
 
   void ReplacePlaceholder(Placeholder ps, ProgBlock pg) {
     //TODO: allow middle placeholders
-    ps.transform.parent = null;
+    ps.transform.SetParent(null);
     pg.transform.SetParent(this.transform);
     ps.transform.SetParent(this.transform);
 
