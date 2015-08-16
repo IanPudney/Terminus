@@ -36,7 +36,7 @@ public class MainBot : MonoBehaviour {
 	void FixedUpdate() {
 		if (dead) {
 			transform.localScale *= TimeControl.obj.decay_ratio;
-			GetComponent<Renderer>().material.color *= TimeControl.obj.decay_ratio;
+			GetComponentInChildren<Renderer>().material.color *= TimeControl.obj.decay_ratio;
 			transform.position -= new Vector3(0, 0, - TimeControl.obj.slider_rate / 30f);
 		}
 	}
