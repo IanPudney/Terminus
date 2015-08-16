@@ -8,7 +8,7 @@ public class MainBot : MonoBehaviour {
 	Quaternion StopRotation;
 	bool Active;
 	Vector3 DoorVector;
-	int ID;
+	public int ID;
 		
 	const float PRIORITY = 1f;
 
@@ -92,5 +92,14 @@ public class MainBot : MonoBehaviour {
 		} else {
 			StopLocation = StartLocation;
 		}
+	}
+
+	public bool IsOnPaint() {
+		foreach (Paint paint in ObjectDict.obj.paints) {
+			if(Vector3.Distance(paint.transform.position, transform.position) < 0.1f) {
+				return true;
+			}
+		}
+		return false;
 	}
 }

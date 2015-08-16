@@ -7,6 +7,9 @@ public class IfElseStmt : Statement {
 	// Use this for initialization
 	void Start () {
 		base.Start ();
+		RecursiveLayout();
+		ifBlock.SetupLabel().text = "True";
+		elseBlock.SetupLabel().text = "False";
 		//todo: move Layout call to Statement from StmtBlock
 		//todo: if/else text
 	}
