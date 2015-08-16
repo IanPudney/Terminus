@@ -63,7 +63,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3427f88606b5ec84dafb9a9c883cb1b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  boundToParent: 0
+  blockBank: {fileID: 0}
   indentationHint: {fileID: 0}
+  hasPlaceholder: 1
 --- !u!222 &22204180
 CanvasRenderer:
   m_ObjectHideFlags: 1
@@ -82,10 +85,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 5, y: 1}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 50, y: -50}
+  m_SizeDelta: {x: 6, y: 1}
   m_Pivot: {x: .5, y: .5}
 --- !u!1001 &100100000
 Prefab:

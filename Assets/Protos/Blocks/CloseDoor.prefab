@@ -75,6 +75,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0b7e0c2ef64e804099d6899019ccf0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  boundToParent: 0
+  blockBank: {fileID: 0}
   doorway: {fileID: 0}
 --- !u!114 &11496146
 MonoBehaviour:
@@ -117,8 +119,8 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 5, y: 1}
+  m_AnchoredPosition: {x: 1, y: -1}
+  m_SizeDelta: {x: 6, y: 1}
   m_Pivot: {x: .5, y: .5}
 --- !u!1001 &100100000
 Prefab:

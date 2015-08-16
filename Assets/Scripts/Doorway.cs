@@ -5,6 +5,7 @@ public class Doorway : MonoBehaviour {
   Vector3 OpenLocation;
   Vector3 ClosedLocation;
   bool Active;
+	public int doorNumber;
   
   const float PRIORITY = 2f;
   
@@ -18,6 +19,7 @@ public class Doorway : MonoBehaviour {
   
   // Use this for initialization
   void Start () {
+	GetComponentInChildren<TextMesh>().text = doorNumber.ToString ();
     OpenLocation = transform.position;
     ClosedLocation = OpenLocation + CloseDirection;
     if (CloseDirection == Vector3.up) {

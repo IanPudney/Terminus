@@ -4,7 +4,11 @@ using System.Collections;
 
 public class PhysicalButton : MonoBehaviour {
 	public TriggerStatement statement;
-	
+	public int buttonNumber;
+	void Start() {
+		GetComponentInChildren<TextMesh>().text = buttonNumber.ToString ();
+		statement.setButtonNumber(buttonNumber);
+	}
 	void OnEnable() {
 		TimeControl.OnStop += CheckForPlayer;
 	}

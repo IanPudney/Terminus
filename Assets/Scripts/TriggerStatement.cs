@@ -2,11 +2,16 @@
 using System.Collections;
 
 public class TriggerStatement : StmtBlock {
-	
+	public int buttonNumber;
 	public override void Start () {
 	base.Start();
 		stack = new System.Collections.Stack ();
-	label.text = "On <color=\"cyan\">Button 2</color> Pressed";
+		label.text = "On <color=\"cyan\">Button " + buttonNumber.ToString () + "</color> Pressed";
+	}
+
+	public void setButtonNumber(int x) {
+		buttonNumber = x;
+		label.text = "On <color=\"cyan\">Button " + buttonNumber.ToString () + "</color> Pressed";
 	}
 	
 	void Update () {

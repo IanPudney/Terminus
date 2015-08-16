@@ -267,7 +267,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   boundToParent: 0
+  blockBank: {fileID: 0}
   indentationHint: {fileID: 0}
+  hasPlaceholder: 1
 --- !u!114 &11474520
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -280,6 +282,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   boundToParent: 0
+  blockBank: {fileID: 0}
+  indentationHint: {fileID: 0}
+  hasPlaceholder: 1
   ifBlock: {fileID: 11495892}
   elseBlock: {fileID: 11459226}
   tru: 1
@@ -295,7 +300,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   boundToParent: 0
+  blockBank: {fileID: 0}
   indentationHint: {fileID: 0}
+  hasPlaceholder: 1
 --- !u!222 &22215782
 CanvasRenderer:
   m_ObjectHideFlags: 1
@@ -348,7 +355,7 @@ RectTransform:
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
   m_AnchoredPosition: {x: 1.90734863e-06, y: 0}
-  m_SizeDelta: {x: 5, y: 1}
+  m_SizeDelta: {x: 6, y: 1}
   m_Pivot: {x: .5, y: .5}
 --- !u!224 &22482730
 RectTransform:

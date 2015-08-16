@@ -46,7 +46,7 @@ MonoBehaviour:
   blockBank: {fileID: 0}
   indentationHint: {fileID: 0}
   hasPlaceholder: 1
-  loops: 3
+  loops: 4
 --- !u!114 &11415748
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -88,8 +88,8 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: -1.90734863e-06, y: 0}
-  m_SizeDelta: {x: 5, y: 1}
+  m_AnchoredPosition: {x: -438.999908, y: 64}
+  m_SizeDelta: {x: 6, y: 1}
   m_Pivot: {x: .5, y: .5}
 --- !u!1001 &100100000
 Prefab:
