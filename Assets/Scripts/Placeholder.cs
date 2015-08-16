@@ -8,7 +8,6 @@ public class Placeholder : Statement {
   protected override void Start () {
     placeholders.Add (this);
     base.Start();
-    info.text = "{ }";
   }
   
   protected override void Update() {
@@ -31,7 +30,7 @@ public class Placeholder : Statement {
       if(holder.transform.parent == targetTransform) {
         continue;
       }
-      float dist = Vector3.Distance(holder.transform.position, currentPos);
+      float dist = Vector2.Distance(holder.transform.position, currentPos);
       if (dist < minDist)
       {
         minDist = dist;
