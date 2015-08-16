@@ -14,7 +14,7 @@ GameObject:
   - 222: {fileID: 22229710}
   - 33: {fileID: 3347938}
   - 114: {fileID: 11496146}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: CloseDoor
   m_TagString: Untagged
   m_Icon: {fileID: 0}

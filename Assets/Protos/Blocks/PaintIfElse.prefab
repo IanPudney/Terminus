@@ -14,7 +14,7 @@ GameObject:
   - 222: {fileID: 22287156}
   - 33: {fileID: 3336340}
   - 114: {fileID: 11402198}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: PaintIfElse
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -35,7 +35,7 @@ GameObject:
   - 222: {fileID: 22276832}
   - 33: {fileID: 3362918}
   - 114: {fileID: 11463676}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: False
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -56,7 +56,7 @@ GameObject:
   - 222: {fileID: 22218504}
   - 33: {fileID: 3343190}
   - 114: {fileID: 11441244}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: True
   m_TagString: Untagged
   m_Icon: {fileID: 0}
