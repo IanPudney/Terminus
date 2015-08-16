@@ -20,7 +20,7 @@ public class ProgBlock : MonoBehaviour {
   protected virtual void Update() {
   }
   
-  IEnumerator OnMouseDown()
+  public IEnumerator OnMouseDown()
   {
   	if (boundToParent) {
   		return false;

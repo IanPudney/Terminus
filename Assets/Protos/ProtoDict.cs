@@ -13,6 +13,10 @@ public class ProtoDict : MonoBehaviour {
   public GameObject wall;
   
   public GameObject placeholder;
+  //Block objects
+  public GameObject robotMove, robotLeft, robotRight,
+  doorOpen, doorClose, doorToggle,
+  whileBlock, ifElse, entryPoint, triggerPoint;
   
   void Awake () {
     obj = this;
