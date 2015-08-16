@@ -9,6 +9,8 @@ public class MainBot : MonoBehaviour {
 	bool Active;
 	Vector3 DoorVector;
 	public int ID;
+	[HideInInspector]
+	bool dead = false;
 		
 	const float PRIORITY = 1f;
 
@@ -31,11 +33,23 @@ public class MainBot : MonoBehaviour {
 		TimeControl.OnStop -= StopAction;
 	}
 	
+	void FixedUpdate() {
+		if (dead) {
+			transform.localScale *= TimeControl.obj.decay_ratio;
+			GetComponent<Renderer>().material.color *= TimeControl.obj.decay_ratio;
+			transform.position -= new Vector3(0, 0, - TimeControl.obj.slider_rate / 30f);
+		}
+	}
+	
 	void Update() {
-		if (Active) {
+		if (dead) {
+			return;
+			transform.localScale *= (1f - Time.deltaTime);
+			//transform.position -= 0.1f * Time.deltaTime * Vector3.up;
+		} else if (Active) {
 			transform.position = StartLocation + TimeControl.obj.fraction * (StopLocation - StartLocation);
 			transform.rotation = Quaternion.Lerp(StartRotation, StopRotation, TimeControl.obj.fraction);
-		}
+		} 
 	}
 	
 	public void MoveForwardAction() {
@@ -80,6 +94,7 @@ public class MainBot : MonoBehaviour {
 	}
 	
 	void OnCollisionEnter(Collision other) {
+		print(other.transform.name);
 		Doorway door = other.gameObject.GetComponent<Doorway>();
 		MainBot bot = other.gameObject.GetComponent<MainBot>();
 		if (door) {
@@ -101,5 +116,10 @@ public class MainBot : MonoBehaviour {
 			}
 		}
 		return false;
+	}
+	
+	public void FallIntoVoid() {
+		dead = true;
+		TimeControl.OnStop -= StopAction;
 	}
 }

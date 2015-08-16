@@ -13,7 +13,6 @@ GameObject:
   - 124: {fileID: 12429790}
   - 81: {fileID: 8197420}
   - 114: {fileID: 11419154}
-  - 114: {fileID: 11458110}
   - 114: {fileID: 11485284}
   m_Layer: 0
   m_Name: GameCamera
@@ -46,9 +45,9 @@ Camera:
   m_BackGroundColor: {r: 0, g: 0, b: 0, a: .0196078438}
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: .400000006
+    x: 0
     y: 0
-    width: 15
+    width: 10
     height: 15
   near clip plane: .300000012
   far clip plane: 1000
@@ -91,30 +90,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ef42bd78f1d55343aec43f829b6f579, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tick: 0
---- !u!114 &11458110
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 172856}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f3a183dde6f08784bb99b029c67606d4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  plane: {fileID: 0}
-  backdrop: {fileID: 0}
-  showMain: 1
-  showSub: 1
-  gridSizeX: 10
-  gridSizeY: 10
-  gridSizeZ: 0
-  smallStep: 1
-  largeStep: 100
-  startX: 0
-  startY: 0
-  startZ: 0
 --- !u!114 &11485284
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -126,8 +101,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7610aa25f3fd6354ba679ce9f6d34dd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  xSize: 10
-  ySize: 10
+  xSize: 4
+  ySize: 4
 --- !u!124 &12429790
 Behaviour:
   m_ObjectHideFlags: 1
