@@ -12,8 +12,8 @@ public class LevelTransition : MonoBehaviour {
 	
 	public void StopAction() {
 		foreach (MainBot bot in ObjectDict.obj.robots) {
-			if (bot.transform.position == transform.position) {
-				print ("Win!");
+			if (Vector3.Distance(bot.transform.position, transform.position) < 0.1f) {
+				
 			}
 		}
 	}

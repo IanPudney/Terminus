@@ -3,17 +3,16 @@ using System.Collections;
 using UnityEngine.UI;
 
 public class Statement : ProgBlock {
-
   protected System.Collections.Stack stack;
   int nextStmt = 1;
 	Color defaultColor;
 
 	protected static Statement highlighted = null;
   protected void Highlight() {
-			GetComponent<Image>().color = defaultColor * 0.5f;
+		GetComponent<Image>().color = defaultColor * 0.5f;
 	}
   protected void Unhighlight() {
-			GetComponent<Image>().color = defaultColor;
+		GetComponent<Image>().color = defaultColor;
 	}
 
   protected override void Start () {
@@ -86,4 +85,8 @@ public class Statement : ProgBlock {
     return true;
   }
 
+	void OnDestroy() {
+		TimeControl.OnStart -= OnTick;
+		TimeControl.OnTelegraph -= OnTelegraph;
+	}
 }

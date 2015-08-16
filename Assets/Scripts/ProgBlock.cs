@@ -3,6 +3,8 @@ using UnityEngine.UI;
 using System.Collections;
 
 public class ProgBlock : MonoBehaviour {
+	//Set to true for program elements the player cannot change.
+	public bool boundToParent = false;
   protected Text label;
   
   protected virtual void Start () {
@@ -20,6 +22,9 @@ public class ProgBlock : MonoBehaviour {
   
   IEnumerator OnMouseDown()
   {
+  	if (boundToParent) {
+  		return false;
+  	}
     //remove from parent
 	ProgBlock oldParent = transform.parent.gameObject.GetComponent<ProgBlock> ();
 

@@ -74,6 +74,9 @@ public class TimeControl : MonoBehaviour {
 	
 	public void Play() {
 		isPlaying = true;
+		foreach (ProgBlock block in FindObjectsOfType<ProgBlock>()) {
+			block.boundToParent = true;
+		}
 	}
 	public void Pause() {
 		isPlaying = false;
