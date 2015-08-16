@@ -6,6 +6,8 @@ public class ProgBlock : MonoBehaviour {
 	//Set to true for program elements the player cannot change.
 	public bool boundToParent = false;
 	protected Text label;
+	public delegate void VoidDelegate();
+	public event VoidDelegate onPickup;
 	//Used for adding things back into block banks
 	[HideInInspector]
 	public BlockBank blockBank;
@@ -30,6 +32,9 @@ public class ProgBlock : MonoBehaviour {
 	public IEnumerator OnMouseDown() {
 		if (boundToParent) {
 			return false;
+		}
+		if(onPickup != null) {
+			onPickup();
 		}
 		//remove from parent
 		ProgBlock oldParent = transform.parent.gameObject.GetComponent<ProgBlock> ();
