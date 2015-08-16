@@ -90,14 +90,15 @@ public class MainBot : MonoBehaviour {
 		StartRotation = StopRotation;
 		transform.position = StartLocation;
 		transform.rotation = StartRotation;
+		DoorVector = Vector3.zero;
 		Active = false;
 	}
 	
 	void OnCollisionEnter(Collision other) {
-		print(other.transform.name);
+		print("Hello" + other.transform.name);
 		Doorway door = other.gameObject.GetComponent<Doorway>();
 		MainBot bot = other.gameObject.GetComponent<MainBot>();
-		if (door) {
+		if (door && door.state == Doorway.State.Open) {
 			if (DoorVector + door.CloseDirection == Vector3.zero) {
 				Time.timeScale = 0.0f;
 			} else if (DoorVector == Vector3.zero) {

@@ -14,7 +14,7 @@ GameObject:
   - 222: {fileID: 22217318}
   - 33: {fileID: 3351274}
   - 114: {fileID: 11495102}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: MoveRobot
   m_TagString: Untagged
   m_Icon: {fileID: 0}

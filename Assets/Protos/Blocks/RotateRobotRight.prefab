@@ -14,7 +14,7 @@ GameObject:
   - 222: {fileID: 22284948}
   - 33: {fileID: 3388146}
   - 114: {fileID: 11417736}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: RotateRobotRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
