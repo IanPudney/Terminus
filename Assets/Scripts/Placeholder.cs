@@ -21,20 +21,30 @@ public class Placeholder : Statement {
   static public Placeholder GetClosestPlaceholder(Transform targetTransform)
   {
     Placeholder pMin = null;
-    float minDist = 0.5f;
-    Vector3 currentPos = targetTransform.position;
+    float minDist = float.MaxValue;
+    Vector3 currentPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
     foreach (Object obj in placeholders)
     {
       Placeholder holder = (Placeholder) obj;
+		Bounds objBounds = holder.GetComponent<BoxCollider>().bounds;
       //skip if member of self
       if(holder.transform.parent == targetTransform) {
         continue;
       }
       float dist = Vector2.Distance(holder.transform.position, currentPos);
-      if (dist < minDist)
+		if (dist < minDist &&
+		    currentPos.x < objBounds.max.x &&
+		    currentPos.y < objBounds.max.y &&
+  			currentPos.x > objBounds.min.x &&
+  			currentPos.y > objBounds.min.y)
       {
         minDist = dist;
         pMin = holder;
+      } else {
+      	print (currentPos.x + "<" + objBounds.max.x + "/// " +
+		    currentPos.y + " <" + objBounds.max.y + "/// " +
+  			currentPos.x + ">" + objBounds.min.x + "/// " +
+  			currentPos.y + "> " + objBounds.min.y);
       }
     }
     return pMin;
