@@ -11,7 +11,7 @@ public class TriggerStatement : StmtBlock {
 
 	public void setButtonNumber(int x) {
 		buttonNumber = x;
-		label.text = "On <color=\"cyan\">Button " + buttonNumber.ToString () + "</color> Pressed";
+		SetupLabel().text = "On <color=\"cyan\">Button " + buttonNumber.ToString () + "</color> Pressed";
 	}
 	
 	void Update () {
