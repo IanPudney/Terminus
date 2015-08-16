@@ -698,7 +698,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11488682, guid: 728ca354d82d718409d9f28970097900, type: 2}
       propertyPath: throttleMultiplier
-      value: .899999976
+      value: .800000012
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 728ca354d82d718409d9f28970097900, type: 2}
