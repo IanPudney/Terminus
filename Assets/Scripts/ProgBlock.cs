@@ -6,15 +6,22 @@ public class ProgBlock : MonoBehaviour {
 	//Set to true for program elements the player cannot change.
 	public bool boundToParent = false;
   protected Text label;
+
+	protected virtual void Start() {
+		SetupLabel ();
+	}
+
   
-  protected virtual void Start () {
+  public virtual Text SetupLabel () {
+		if(label != null) return label;
 		label = GameObject.Instantiate(ProtoDict.obj.label) as Text;
 		label.transform.SetParent(transform);
 		label.transform.localPosition = new Vector3(0, 0, -2);
-		label.fontSize = 25;
-		label.transform.localScale = new Vector3(0.02f, 
-		                                     0.02f, 
-		                                     0.02f);
+		label.fontSize = 13;
+		label.transform.localScale = new Vector3(0.04f, 
+		                                     0.04f, 
+		                                     0.04f);
+		return label;
   }
   
   protected virtual void Update() {
