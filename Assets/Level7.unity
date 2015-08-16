@@ -4585,6 +4585,10 @@ Prefab:
       propertyPath: m_Name
       value: BlockBankMove
       objectReference: {fileID: 0}
+    - target: {fileID: 11450456, guid: be011c060bc350849b513472094d056e, type: 2}
+      propertyPath: blockProto
+      value: 
+      objectReference: {fileID: 134664, guid: 41d6942d6d410d74e80d7fa81b2b5338, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: be011c060bc350849b513472094d056e, type: 2}
   m_IsPrefabParent: 0
@@ -4930,11 +4934,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22494556, guid: ab470f8fcd8ae0f4d966c1cf959d8ee6, type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: -4
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 22494556, guid: ab470f8fcd8ae0f4d966c1cf959d8ee6, type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: 1.5
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 22494556, guid: ab470f8fcd8ae0f4d966c1cf959d8ee6, type: 2}
       propertyPath: m_SizeDelta.x
@@ -4946,7 +4950,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22494556, guid: ab470f8fcd8ae0f4d966c1cf959d8ee6, type: 2}
       propertyPath: m_AnchorMin.x
-      value: 1
+      value: .5
       objectReference: {fileID: 0}
     - target: {fileID: 22494556, guid: ab470f8fcd8ae0f4d966c1cf959d8ee6, type: 2}
       propertyPath: m_AnchorMin.y
@@ -4954,7 +4958,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22494556, guid: ab470f8fcd8ae0f4d966c1cf959d8ee6, type: 2}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: .5
       objectReference: {fileID: 0}
     - target: {fileID: 22494556, guid: ab470f8fcd8ae0f4d966c1cf959d8ee6, type: 2}
       propertyPath: m_AnchorMax.y
@@ -5021,7 +5025,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22475508, guid: 271de494d92e4f947aebf40eb6f312e8, type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: 4
+      value: 3.5
       objectReference: {fileID: 0}
     - target: {fileID: 22475508, guid: 271de494d92e4f947aebf40eb6f312e8, type: 2}
       propertyPath: m_SizeDelta.x
