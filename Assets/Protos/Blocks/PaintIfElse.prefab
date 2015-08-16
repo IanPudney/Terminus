@@ -226,6 +226,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   boundToParent: 1
   indentationHint: {fileID: 0}
+  hasPlaceholder: 1
 --- !u!114 &11441244
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -259,6 +260,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   boundToParent: 0
+  indentationHint: {fileID: 0}
+  hasPlaceholder: 0
   ifBlock: {fileID: 11488914}
   elseBlock: {fileID: 11409756}
   tru: 1
@@ -297,6 +300,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   boundToParent: 1
   indentationHint: {fileID: 0}
+  hasPlaceholder: 1
 --- !u!222 &22218504
 CanvasRenderer:
   m_ObjectHideFlags: 1
@@ -340,15 +344,15 @@ RectTransform:
   m_GameObject: {fileID: 115418}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 20, y: 20, z: 1}
   m_Children:
   - {fileID: 22429212}
   - {fileID: 22485934}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_AnchorMin: {x: .5, y: .5}
-  m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: 1.00135803e-05, y: 4.76837158e-07}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 250, y: -350}
   m_SizeDelta: {x: 5, y: 1}
   m_Pivot: {x: .5, y: .5}
 --- !u!224 &22485934
