@@ -101,7 +101,6 @@ public class MainBot : MonoBehaviour {
 	
 	void OnCollisionEnter(Collision other) {
 		print("Collision with " + other.transform.name);
-		return;
 		Doorway door = other.gameObject.GetComponent<Doorway>();
 		MainBot bot = other.gameObject.GetComponent<MainBot>();
 		if (door && door.state == Doorway.State.Open) {
