@@ -117,4 +117,8 @@ public class TimeControl : MonoBehaviour {
 	public void Clear() {
 		Application.LoadLevel (Application.loadedLevelName);
 	}
+	
+	public void Menu() {
+		Application.LoadLevel ("Title");
+	}
 }
