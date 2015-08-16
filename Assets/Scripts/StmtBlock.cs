@@ -19,55 +19,53 @@ public class StmtBlock : Statement {
 		indentationHint.GetComponent<Image>().color = GetComponent<Image>().color;
 	}
 
-  virtual public void Start () {
-	base.Start ();
+	virtual public void Start () {
+		base.Start ();
 		InstantiateHint ();
-
-	if(hasPlaceholder) {
+		if(hasPlaceholder) {
 			GameObject initialPlaceholder = Instantiate(ProtoDict.obj.placeholder, transform.position, transform.rotation) as GameObject;
 			initialPlaceholder.transform.SetParent(this.transform);
 			initialPlaceholder.transform.localScale = Vector3.one;
 			initialPlaceholder.GetComponent<Placeholder> ().OnReplace += ReplacePlaceholder;
 		}
-		
-    Layout ();
-  }
-  
-  protected override void Update () {
-  	base.Update();
-  }
+		Layout ();
+	}
+	
+	protected override void Update () {
+		base.Update();
+	}
 
-  void ReplacePlaceholder(Placeholder ps, ProgBlock pg) {
-    //TODO: allow middle placeholders
-    ps.transform.SetParent(null);
-    pg.transform.SetParent(this.transform);
-    ps.transform.SetParent(this.transform);
+	void ReplacePlaceholder(Placeholder ps, ProgBlock pg) {
+		//TODO: allow middle placeholders
+		ps.transform.SetParent(null);
+		pg.transform.SetParent(this.transform);
+		ps.transform.SetParent(this.transform);
 
 		RecursiveLayout ();
-  }
+	}
 
 	//RETURNS: Total height of object with all children.
-  public override float Layout() {
-  	//Position immediately beneath
-    Vector3 nextPosition = new Vector3 (1f, -1f, 0);
-    float totalHeight = 0;
-    foreach (Transform child in transform) {
-      ProgBlock block = child.GetComponent<ProgBlock>();
-      if (!block) {
-      	continue;
-      }
-      float height = block.Layout();
-      Vector3 blockPosition = block.transform.localPosition;
-      block.transform.localPosition = nextPosition;
-      nextPosition.y -= height;
-      totalHeight += height;
-    }
-	if(indentationHint == null) {
-			InstantiateHint();
+	public override float Layout() {
+		//Position immediately beneath
+		Vector3 nextPosition = new Vector3 (1f, -1f, 0);
+		float totalHeight = 0;
+		foreach (Transform child in transform) {
+			ProgBlock block = child.GetComponent<ProgBlock>();
+			if (!block) {
+				continue;
+			}
+			float height = block.Layout();
+			Vector3 blockPosition = block.transform.localPosition;
+			block.transform.localPosition = nextPosition;
+			nextPosition.y -= height;
+			totalHeight += height;
 		}
+	if(indentationHint == null) {
+		InstantiateHint();
+	}
 	indentationHint.transform.localScale = new Vector3(1f, totalHeight, 1f);
 	indentationHint.transform.localPosition = new Vector3(-2f, (-totalHeight / 2f) - 0.5f, 0);
 
-    return -nextPosition.y;
-  }
+	return -nextPosition.y;
+	}
 }
