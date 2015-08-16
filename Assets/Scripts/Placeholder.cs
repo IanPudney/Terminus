@@ -38,10 +38,10 @@ public class Placeholder : Statement {
 	            corners.Add(new Vector2(targetBounds.min.x, targetBounds.max.y));
 	            foreach (Vector2 corner in corners) {
 	            	if (
-							corner.x < objBounds.max.x &&
-							corner.y < objBounds.max.y &&
-							corner.x > objBounds.min.x &&
-							corner.y > objBounds.min.y) {
+							corner.x <= objBounds.max.x &&
+							corner.y <= objBounds.max.y &&
+							corner.x >= objBounds.min.x &&
+							corner.y >= objBounds.min.y) {
 						minDist = dist;
 						pMin = holder;
 					}
@@ -57,10 +57,10 @@ public class Placeholder : Statement {
 			Bounds bankBounds = bank.GetComponent<BoxCollider>().bounds;
 			float dist = Vector2.Distance(bank.transform.position, targetBounds.center);
 			if (dist < minDist &&
-				    targetBounds.center.x < bankBounds.max.x &&
-				    targetBounds.center.y < bankBounds.max.y &&
-				    targetBounds.center.x > bankBounds.min.x &&
-				    targetBounds.center.y > bankBounds.min.y) {
+				    targetBounds.center.x <= bankBounds.max.x &&
+				    targetBounds.center.y <= bankBounds.max.y &&
+				    targetBounds.center.x >= bankBounds.min.x &&
+				    targetBounds.center.y >= bankBounds.min.y) {
 				bank.numLeft += 1;
 				bank.GetComponentInChildren<TextMesh>().text = ("x" + bank.numLeft);
 				Destroy (targetTransform.GetComponentInChildren<Image>().gameObject);

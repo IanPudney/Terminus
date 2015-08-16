@@ -55,7 +55,7 @@ public class Statement : ProgBlock {
 	public virtual void Queue() {
 		stack.Push (this);
 		TimeControl.OnStart -= OnTick;
-	TimeControl.OnTelegraph -= OnTelegraph;
+		TimeControl.OnTelegraph -= OnTelegraph;
 	}
 
 	public virtual void Dequeue() {
