@@ -76,7 +76,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 0, a: 1}
+  m_Color: {r: .739655256, g: 0, b: .75, a: 1}
   m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
@@ -96,6 +96,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97e4923ef09776942b751f6f1a35e812, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  boundToParent: 0
   startRobotID: 0
 --- !u!222 &22284948
 CanvasRenderer:

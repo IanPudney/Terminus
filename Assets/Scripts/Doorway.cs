@@ -10,11 +10,11 @@ public class Doorway : MonoBehaviour {
   
   public Vector3 CloseDirection;
   
-  enum State {
+  public enum State {
     Open,
     Closed,
   };
-  State state;
+  public State state;
   
   // Use this for initialization
   void Start () {
@@ -41,8 +41,12 @@ public class Doorway : MonoBehaviour {
                         Quaternion.Euler(Vector3.forward * 90f)) as GameObject;
       a.transform.parent = ProtoDict.obj.transform;
     }
-    Active = false;
-    state = State.Open;
+    if (state == State.Open) {
+    	Active = false;
+    } else {
+    	state = State.Open;			
+		TimeControl.OnSetup += DoorClose;
+    }
   }
   
   //Don't touch this ever.  
@@ -80,7 +84,8 @@ public class Doorway : MonoBehaviour {
       SpaceControl.obj.AttemptAction(PRIORITY * (OpenLocation - ClosedLocation),
                                      Mathf.FloorToInt(ClosedLocation.x), Mathf.FloorToInt(ClosedLocation.y));
       SpaceControl.obj.AttemptAction(PRIORITY * (OpenLocation - ClosedLocation),
-                                     Mathf.FloorToInt(OpenLocation.x), Mathf.FloorToInt(OpenLocation.y));
+			                               Mathf.FloorToInt(OpenLocation.x), Mathf.FloorToInt(OpenLocation.y));
+		TimeControl.OnSetup -= DoorClose;
     }
   }
   
@@ -110,8 +115,10 @@ public class Doorway : MonoBehaviour {
       Active = false;
       if (state == State.Open) {
         state = State.Closed;
+        transform.position = ClosedLocation;
       } else {
         state = State.Open;
+        transform.position = OpenLocation;
       }
     }
   }

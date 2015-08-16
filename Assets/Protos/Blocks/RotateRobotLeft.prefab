@@ -75,6 +75,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 427da4fd8ef36534dbb0cb8b497cdd80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  boundToParent: 0
   startRobotID: 0
 --- !u!114 &11484390
 MonoBehaviour:
@@ -88,7 +89,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 0, a: 1}
+  m_Color: {r: .342799336, g: 0, b: .764705896, a: 1}
   m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0

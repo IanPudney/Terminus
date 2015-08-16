@@ -75,6 +75,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78b60888a726b1a40831af322a1a1b04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  boundToParent: 0
   doorway: {fileID: 0}
 --- !u!114 &11480932
 MonoBehaviour:
@@ -88,7 +89,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 0, a: 1}
+  m_Color: {r: .676470578, g: .519016206, b: .00497405324, a: 1}
   m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0

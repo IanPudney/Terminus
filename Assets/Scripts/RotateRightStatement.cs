@@ -14,7 +14,7 @@ public class RotateRightStatement : Statement {
 		set
 		{
 			robotID = value;
-			label.text = "Rotate <color=\"cyan\">R" + robotID.ToString() + "</color> Left";
+			label.text = "Rotate <color=\"cyan\">R" + robotID.ToString() + "</color> Right";
 			Debug.Log("Set label to " + label.text);
 		}
 	}
