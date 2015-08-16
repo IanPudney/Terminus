@@ -3,8 +3,8 @@ using System.Collections;
 using UnityEngine.UI;
 
 public class Statement : ProgBlock {
-  protected System.Collections.Stack stack;
-  int nextStmt = 1;
+  public System.Collections.Stack stack;
+  int nextStmt = 0;
 	Color defaultColor;
 
 	protected static Statement highlighted = null;
@@ -25,22 +25,27 @@ public class Statement : ProgBlock {
   }
   
   public virtual void OnTick() {
-    Debug.Log ("Tick: " + GetType ().ToString ());
-	if(highlighted != null) {
+    Debug.Log ("Tick " + TimeControl.tick +": " + GetType ().ToString ());
+		TimeControl.OnStart -= OnTick;
+		TimeControl.OnTelegraph -= OnTelegraph;
+		if(highlighted != null) {
 			highlighted.Unhighlight ();
 		}
 		highlighted = this;
 		Highlight();
 	
-    if (CallNextChild() && ShouldPop()) {
-      TimeControl.OnStart -= OnTick;
-      TimeControl.OnTelegraph -= OnTelegraph;
-      if(stack.Count == 0) {
-        return; //we're done
-      }
-      Statement topStackStatement = ((Statement)stack.Peek ());
-      topStackStatement.Dequeue ();
-    }
+    if (CallNextChild()) {
+			if(ShouldPop()) {
+				if(stack.Count == 0) {
+					return; //we're done
+				}
+				Statement topStackStatement = ((Statement)stack.Peek ());
+				topStackStatement.Dequeue ();
+			} else {
+				TimeControl.OnStart += OnTick;
+				TimeControl.OnTelegraph += OnTelegraph;
+			}
+		}
   }
 
   public virtual void OnTelegraph() {
@@ -62,19 +67,22 @@ public class Statement : ProgBlock {
   public virtual bool CallNextChild() {
     while (true) {
       //call the next child, and remove this from the callback
-      Statement[] children = gameObject.GetComponentsInChildren<Statement>(); 
-      if (nextStmt >= children.Length) {
-        nextStmt = 1;
+	  
+      if (nextStmt >= transform.childCount) {
+        nextStmt = 0;
         return true;
       }
-      if (children [nextStmt] is Placeholder) {
+			Statement child = transform.GetChild (nextStmt).GetComponent<Statement>();
+
+	  if (child == null || child is Placeholder) {
         nextStmt++;
         continue;
       }
       Queue ();
-      TimeControl.OnStart += children[nextStmt].OnTick;
-      TimeControl.OnTelegraph += children[nextStmt].OnTelegraph;
-      children [nextStmt].stack = stack;
+			Debug.Log ("Length: " + transform.childCount + " stmt: " + nextStmt);
+			TimeControl.OnStart += child.OnTick;
+			TimeControl.OnTelegraph += child.OnTelegraph;
+			child.stack = stack;
       nextStmt ++;
       return false;
     }
