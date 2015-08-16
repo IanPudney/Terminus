@@ -142,4 +142,8 @@ public class MainBot : MonoBehaviour {
 		transform.localScale = Vector3.one;
 		TimeControl.OnStop += StopAction;
 	}
+	
+	void OnDestroy() {
+		OnDisable();
+	}
 }

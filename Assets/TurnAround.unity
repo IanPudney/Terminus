@@ -648,6 +648,10 @@ Prefab:
       propertyPath: EmissionModule.rate.scalar
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 19862966, guid: 7a42ce9e1f2c01043994b8ef896d6ebb, type: 2}
+      propertyPath: InitialModule.startColor.minColor.rgba
+      value: 4288200621
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7a42ce9e1f2c01043994b8ef896d6ebb, type: 2}
   m_IsPrefabParent: 0
