@@ -1478,6 +1478,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   boundToParent: 1
+  blockBank: {fileID: 0}
   doorway: {fileID: 385812993}
 --- !u!23 &1142706127
 MeshRenderer:
@@ -1718,6 +1719,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   boundToParent: 0
+  blockBank: {fileID: 0}
   indentationHint: {fileID: 0}
 --- !u!4 &1225297318 stripped
 Transform:

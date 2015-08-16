@@ -18,19 +18,19 @@ public class MoveStatement : Statement {
 			Debug.Log("Set label to " + label.text);
 		}
 	}
-  
-  protected override void Start() {
-    base.Start ();
+	
+	protected override void Start() {
+		base.Start ();
 	RobotID = startRobotID;
-  }
+	}
 
-  public override void OnTick() {	
+	public override void OnTick() {	
 	base.OnTick ();
-    ObjectDict.obj.robots[robotID].StartAction ();
-  }
+		ObjectDict.obj.robots[robotID].StartAction ();
+	}
 
-  public override void OnTelegraph() {
+	public override void OnTelegraph() {
 	ObjectDict.obj.robots[robotID].MoveForwardAction ();
-    base.OnTelegraph ();
-  }
+		base.OnTelegraph ();
+	}
 }

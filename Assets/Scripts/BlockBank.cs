@@ -64,8 +64,8 @@ public class BlockBank : MonoBehaviour {
 		label.transform.localPosition = new Vector3(0, 0, -2);
 		label.fontSize = 25;
 		label.transform.localScale = new Vector3(0.02f, 
-		                                         0.02f, 
-		                                         0.02f);
+																						 0.02f, 
+																						 0.02f);
 		label.text = blockDocString;
 		GetComponentInChildren<TextMesh>().text = ("x" + numLeft);
 		GetComponent<Image>().color = blockProto.GetComponent<Image>().color;
@@ -75,7 +75,7 @@ public class BlockBank : MonoBehaviour {
 	/*public bool HasSameClass() {
 	
 	}*/
-  
+	
 	void OnMouseDown()
 	{
 		if (numLeft <= 0) {
@@ -89,6 +89,7 @@ public class BlockBank : MonoBehaviour {
 		newBlock.transform.localScale = transform.localScale;
 		newBlock.transform.position = transform.position;
 		ProgBlock newProgBlock = newBlock.GetComponent<ProgBlock>();
+		newProgBlock.blockBank = this;
 		newProgBlock.OnMouseDown ();
 		return;
 	}
