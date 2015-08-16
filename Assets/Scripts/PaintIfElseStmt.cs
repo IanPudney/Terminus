@@ -4,7 +4,7 @@ using System.Collections;
 public class PaintIfElseStmt : IfElseStmt {
 	public MainBot robot;
 
-	protected override void Start() {
+	public override void Start() {
 		base.Start ();
 		ifBlock.SetupLabel().text = "True";
 		elseBlock.SetupLabel().text = "False";

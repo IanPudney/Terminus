@@ -6,6 +6,11 @@ using UnityEngine.UI;
 public class StmtBlock : Statement {
 	public GameObject indentationHint;
 
+	public bool hasPlaceholder = true;
+	public virtual bool HasPlaceholder() {
+		return hasPlaceholder;
+	}
+
 	virtual public void InstantiateHint() {
 		indentationHint = Instantiate(ProtoDict.obj.indentationHint, transform.position, transform.rotation) as GameObject;
 		indentationHint.transform.SetParent(this.transform);
@@ -18,10 +23,12 @@ public class StmtBlock : Statement {
 	base.Start ();
 		InstantiateHint ();
 
-    GameObject initialPlaceholder = Instantiate(ProtoDict.obj.placeholder, transform.position, transform.rotation) as GameObject;
-    initialPlaceholder.transform.SetParent(this.transform);
-	initialPlaceholder.transform.localScale = Vector3.one;
-    initialPlaceholder.GetComponent<Placeholder> ().OnReplace += ReplacePlaceholder;
+	if(hasPlaceholder) {
+			GameObject initialPlaceholder = Instantiate(ProtoDict.obj.placeholder, transform.position, transform.rotation) as GameObject;
+			initialPlaceholder.transform.SetParent(this.transform);
+			initialPlaceholder.transform.localScale = Vector3.one;
+			initialPlaceholder.GetComponent<Placeholder> ().OnReplace += ReplacePlaceholder;
+		}
 		
     Layout ();
   }

@@ -1,22 +1,24 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class IfElseStmt : Statement {
+public class IfElseStmt : StmtBlock {
 	public Statement ifBlock;
 	public Statement elseBlock;
+	bool initedLayout = false;
 	// Use this for initialization
-	void Start () {
+	public override void Start () {
 		base.Start ();
-		RecursiveLayout();
 		ifBlock.SetupLabel().text = "True";
 		elseBlock.SetupLabel().text = "False";
-		//todo: move Layout call to Statement from StmtBlock
-		//todo: if/else text
 	}
 	
 	// Update is called once per frame
 	void Update () {
-	
+		base.Update ();
+		if(!initedLayout) {
+			RecursiveLayout ();
+			initedLayout = true;
+		}
 	}
 	public bool tru = true;
 	public virtual bool Test() {
