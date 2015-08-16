@@ -20,6 +20,7 @@ public class LevelTransition : MonoBehaviour {
 	
 	string LevelMap() {
 		switch (Application.loadedLevelName) {
+			case "Level1": return "Level2";
 			case "Level2": return "Level3";
 			case "Level3": return "Level4";
 			case "Level4": return "Level5";

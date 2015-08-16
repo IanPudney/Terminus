@@ -25,10 +25,14 @@ public class SpaceControl : MonoBehaviour {
 	}
 	
 	void Start() {
+		Camera.main.transform.position = new Vector3(xSize*0.5f, ySize*0.5f - 1f, -20f);
+		float minWidth = ((xSize + 4) * Screen.height / Screen.width * 0.5f) / (1f - Camera.main.rect.x);
+		float minHeight = (ySize + 4) * 0.5f / (1 - Camera.main.rect.y);
+		Camera.main.orthographicSize = Mathf.Max (minWidth, minHeight);
 	//UICanvas.obj.GetComponent<RectTransform>().sizeDelta = new Vector2(xSize, ySize);
 	//FindObjectOfType<Slider>().transform.position = new Vector3(xSize * 0.5f, ySize + 0.4f, -3f);
 	
-		//Build walls around the edge to handle undetermined behavior
+		/*//Build walls around the edge to handle undetermined behavior
 		for (int x = 0; x < xSize; ++x) {
 			GameObject a = Instantiate(ProtoDict.obj.wall,
 					new Vector3(x * 1.0f + 0.5f, 0.5f, 0f), Quaternion.identity) as GameObject;
@@ -44,7 +48,7 @@ public class SpaceControl : MonoBehaviour {
 			GameObject b = Instantiate(ProtoDict.obj.wall,
 					new Vector3(xSize * 1.0f - 0.5f, y * 1.0f + 0.5f, 0f), Quaternion.identity) as GameObject;
 			b.transform.parent = ProtoDict.obj.transform;
-		}
+		}*/
 	}
 	
 	//Don't touch this ever.	

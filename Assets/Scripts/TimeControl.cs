@@ -23,12 +23,18 @@ public class TimeControl : MonoBehaviour {
 	//public float transition_time = 0.5f;
 	//public float time_between_steps = 1f;
 	
-	float slider_rate;
+	public float slider_rate;
 	public float time_between_steps {
 		get { return slider_rate / (1f - Mathf.Pow(slider_rate, 6f)); }
 	}
 	public float transition_time {
 		get { return 1f / (10f * (1f - slider_rate)); }
+	}
+	public float decay_ratio {
+		get { return (1f - (Mathf.Pow ((1f - slider_rate), 2f) / 10f)); }
+	}
+	public float aesthetic_speed {
+		get { return (Mathf.Pow ((1f - slider_rate), 2)); }
 	}
 	
 	enum state {
