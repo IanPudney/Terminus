@@ -5,6 +5,7 @@ using System.Collections;
 public class ProgBlock : MonoBehaviour {
 	//Set to true for program elements the player cannot change.
 	public bool boundToParent = false;
+	bool defaultBoundToParent;
 	protected Text label;
 	public delegate void VoidDelegate();
 	public event VoidDelegate onPickup;
@@ -14,6 +15,7 @@ public class ProgBlock : MonoBehaviour {
 
 	protected virtual void Start() {
 		SetupLabel ();
+		defaultBoundToParent = boundToParent;
 	}
 	
 	public virtual Text SetupLabel () {
@@ -35,6 +37,10 @@ public class ProgBlock : MonoBehaviour {
 		}
 		if(onPickup != null) {
 			onPickup();
+		}
+		
+		foreach (Placeholder holder in FindObjectsOfType<Placeholder>()) {	
+			holder.GetComponent<ParticleSystem>().enableEmission = true;
 		}
 		//remove from parent
 		ProgBlock oldParent = transform.parent.gameObject.GetComponent<ProgBlock> ();
@@ -60,6 +66,9 @@ public class ProgBlock : MonoBehaviour {
 		} else {
 		
 		}
+		foreach (Placeholder holder in FindObjectsOfType<Placeholder>()) {
+			holder.GetComponent<ParticleSystem>().enableEmission = false;
+		}
 	}
 	public virtual float Layout() {
 		return transform.localScale.y;
@@ -74,5 +83,9 @@ public class ProgBlock : MonoBehaviour {
 			uppermost = parent;
 		}
 		uppermost.Layout ();
+	}
+	
+	public virtual void Reset() {
+		boundToParent = defaultBoundToParent;
 	}
 }

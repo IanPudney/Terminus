@@ -16,9 +16,11 @@ public class Doorway : MonoBehaviour {
 		Closed,
 	};
 	public State state;
+	State defaultState;
 	
 	// Use this for initialization
 	void Start () {
+		defaultState = state;
 		GetComponentInChildren<TextMesh>().text = doorNumber.ToString ();
 
 		OpenLocation = transform.position;
@@ -124,5 +126,14 @@ public class Doorway : MonoBehaviour {
 				transform.position = OpenLocation;
 			}
 		}
+	}
+	
+	public void Reset() {
+		if (defaultState == State.Open) {
+			transform.position = OpenLocation;
+		} else {
+			transform.position = ClosedLocation;
+		}
+		Active = false;
 	}
 }
