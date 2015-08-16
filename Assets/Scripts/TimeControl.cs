@@ -16,6 +16,7 @@ public class TimeControl : MonoBehaviour {
 	
 	static public TimeControl obj;
 	static public int tick = 0;
+	public float throttleMultiplier = 1.0f;
 	bool isPlaying = false;
 	
 	GameObject StartButton = null;
@@ -58,7 +59,10 @@ public class TimeControl : MonoBehaviour {
 		if (!isPlaying) {
 			return;
 		}
-		slider_rate = 1f - FindObjectOfType<Slider>().value;
+		slider_rate = 1f - (FindObjectOfType<Slider>().value * throttleMultiplier);
+		if (slider_rate > 1f) {
+			slider_rate = 1f;
+		}
 		time_since_update += Time.deltaTime	;
 		if (State == state.between) {
 			if (time_since_update > time_between_steps) {

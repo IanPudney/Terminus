@@ -12,7 +12,7 @@ public class LevelTransition : MonoBehaviour {
 	
 	public void StopAction() {
 		foreach (MainBot bot in ObjectDict.obj.robots) {
-			if (Vector3.Distance(bot.transform.position, transform.position) < 0.1f) {
+			if (Vector2.Distance(bot.transform.position, transform.position) < 0.1f) {
 				Application.LoadLevel(LevelMap());
 			}
 		}
