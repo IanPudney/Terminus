@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class IfElseStmt : StmtBlock {
 	public Statement ifBlock;
@@ -23,5 +24,15 @@ public class IfElseStmt : StmtBlock {
 	public bool tru = true;
 	public virtual bool Test() {
 		return tru;
+	}
+
+	public override List<Statement> getChildren() {
+		List<Statement> children = new List<Statement>();
+		if(Test ()) {
+			children.Add (ifBlock);
+		} else {
+			children.Add(elseBlock);
+		}
+		return children;
 	}
 }

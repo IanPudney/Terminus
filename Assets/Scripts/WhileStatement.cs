@@ -20,4 +20,6 @@ public class WhileStatement : StmtBlock {
 		base.Reset();
 		
 	}
+
+	public override bool ShouldReEnterChildren { get { return true; } }
 }

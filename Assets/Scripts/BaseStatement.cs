@@ -8,7 +8,6 @@ public class BaseStatement : StmtBlock {
 	base.Start();
 		label.text = "On <color=\"cyan\">Play</color>";
 		new StatementVisitor(this);
-
 	}
 	
 	void Update () {

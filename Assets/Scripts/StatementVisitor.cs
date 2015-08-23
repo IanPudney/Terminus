@@ -75,11 +75,16 @@ public class StatementVisitor {
 
 	bool AdvancePC() { //advance the "program counter" one tick
 		//if this object doesn't have any sub-statements to be run at this time
-		if(CurrentStatement().getChildren() == null || CurrentStatement().getChildren().Count == 0) {
-			//return up the stack until we get an object with a sequential statement after it
+		if(CurrentStatement().getChildren() == null ||
+		   CurrentStatement().getChildren().Count == 0) {
+			//return up the stack until we get an object with a sequential statement after it,
+			//or we get an object where we should reenter the children
 			while(programStack.Peek ().Count == 1) {
 				programStack.Pop ();
 				if(programStack.Count == 0) return false;
+				if(CurrentStatement().ShouldReEnterChildren) {
+					return true;
+				}
 			}
 			//use that sequential statement
 			programStack.Peek().Dequeue();

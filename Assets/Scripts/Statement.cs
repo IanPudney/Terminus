@@ -9,7 +9,9 @@ public class Statement : ProgBlock {
 
 	public bool TakesTurn {get; protected set;}
 
-	public List<Statement> getChildren() {
+	public virtual bool ShouldReEnterChildren { get; set; }
+
+	public virtual List<Statement> getChildren() {
 		List<Statement> children = new List<Statement>();
 		foreach(Transform t in transform) {
 			Statement stmt = t.gameObject.GetComponent<Statement>();
@@ -27,8 +29,10 @@ public class Statement : ProgBlock {
 	}
 
 	protected override void Start () {
-	base.Start();
-	defaultColor = GetComponent<Image>().color;
+		base.Start();
+		TakesTurn = false;
+		ShouldReEnterChildren = false;
+		defaultColor = GetComponent<Image>().color;
 	}
 	
 	protected override void Update () {

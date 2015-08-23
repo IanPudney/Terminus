@@ -27,7 +27,7 @@ public class PhysicalButton : MonoBehaviour {
 					return;
 				} else {
 					isTriggered = true;
-					//TODO: run statement here
+					new StatementVisitor(statement);
 				}
 			}
 		}
