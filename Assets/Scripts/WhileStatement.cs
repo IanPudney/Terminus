@@ -12,11 +12,7 @@ public class WhileStatement : StmtBlock {
   	base.Update();
   }
 
-  public override void OnTick() {
-    base.OnTick ();
-  }
-
-  public override bool ShouldPop() {
+  public virtual bool ShouldPop() {
     return false;
   }
 

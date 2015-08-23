@@ -2,8 +2,7 @@
 using System.Collections;
 
 public class DoorOpenStatement : ControlDoor {
-	public override void OnTelegraph() {
+	public void OnTelegraph() {
 		doorway.GetComponent<Doorway> ().DoorOpen ();
-		base.OnTelegraph ();
 	}
 }

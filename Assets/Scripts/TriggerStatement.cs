@@ -5,7 +5,6 @@ public class TriggerStatement : StmtBlock {
 	public int buttonNumber;
 	public override void Start () {
 	base.Start();
-		stack = new System.Collections.Stack ();
 		label.text = "On <color=\"cyan\">Button " + buttonNumber.ToString () + "</color> Pressed";
 	}
 
@@ -16,9 +15,5 @@ public class TriggerStatement : StmtBlock {
 	
 	void Update () {
 		base.Update();
-	}
-
-	public override void OnTick() {
-		base.OnTick ();
 	}
 }

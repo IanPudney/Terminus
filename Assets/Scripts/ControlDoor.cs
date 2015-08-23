@@ -12,8 +12,7 @@ public class ControlDoor : Statement {
 	void Update () {
 		
 	}
-	public override void OnTick() {
+	public void OnTick() {
 		doorway.GetComponent<Doorway> ().StartAction ();
-		base.OnTick ();
 	}
 }

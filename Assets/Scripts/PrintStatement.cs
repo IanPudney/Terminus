@@ -13,13 +13,11 @@ public class PrintStatement : Statement {
 	
 	}
 
-	public override void OnTick() {
+	public void OnTick() {
 		Debug.LogError (value);
-		base.OnTick ();
 	}
 
-	public override void OnTelegraph() {
+	public void OnTelegraph() {
 		Debug.LogError ("Telegraph: " + value);
-		base.OnTelegraph ();
 	}
 }
