@@ -26,19 +26,9 @@ public class TimeControl : MonoBehaviour {
 	//public float transition_time = 0.5f;
 	//public float time_between_steps = 1f;
 	
-	public float slider_rate;
-	public float time_between_steps {
-		get { return slider_rate / (1f - Mathf.Pow(slider_rate, 6f)); }
-	}
-	public float transition_time {
-		get { return 1f / (10f * (1f - slider_rate)); }
-	}
-	public float decay_ratio {
-		get { return (1f - (Mathf.Pow ((1f - slider_rate), 2f) / 10f)); }
-	}
-	public float aesthetic_speed {
-		get { return (Mathf.Pow ((1f - slider_rate), 2)); }
-	}
+	Slider timeSlider;
+	public float time_between_steps = 0.5f;
+	public float transition_time = 1f;
 	
 	enum state {
 		between,
@@ -53,16 +43,14 @@ public class TimeControl : MonoBehaviour {
 		obj = this;
 		OnStart += Empty;
 		OnStop += Empty;
+		timeSlider = FindObjectOfType<Slider>();
 	}
 	
 	void Update () {
 		if (!isPlaying) {
 			return;
 		}
-		slider_rate = 1f - (FindObjectOfType<Slider>().value * throttleMultiplier);
-		if (slider_rate > 1f) {
-			slider_rate = 1f;
-		}
+		Time.timeScale = timeSlider.value;
 		time_since_update += Time.deltaTime	;
 		if (State == state.between) {
 			if (time_since_update > time_between_steps) {
@@ -83,8 +71,11 @@ public class TimeControl : MonoBehaviour {
 	}
 	
 	//Properties are awesome
-	public float fraction {
+	public float transition_fraction {
 		get { return time_since_update / transition_time; }
+	}
+	public float between_fraction {
+		get { return time_since_update / time_between_steps; }
 	}
 	
 	public void Play() {

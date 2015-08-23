@@ -50,7 +50,7 @@ public class Doorway : MonoBehaviour {
 			Active = false;
 		} else {
 			state = State.Open;			
-		TimeControl.OnSetup += DoorClose;
+//		TimeControl.OnSetup += DoorClose;
 		}
 	}
 	
@@ -67,29 +67,24 @@ public class Doorway : MonoBehaviour {
 	void Update() {
 		if (Active) {
 			if (state == State.Open) {
-				transform.position = OpenLocation + TimeControl.obj.fraction * (ClosedLocation - OpenLocation);
+				transform.position =
+						OpenLocation + TimeControl.obj.transition_fraction * (ClosedLocation - OpenLocation);
 			} else {
-				transform.position = ClosedLocation + TimeControl.obj.fraction * (OpenLocation - ClosedLocation);
+				transform.position =
+					ClosedLocation + TimeControl.obj.transition_fraction * (OpenLocation - ClosedLocation);
 			}
 		}
 	}
+	
 	public void DoorOpen() {
 		if (state == State.Closed) {
 			Active = true;
-			SpaceControl.obj.AttemptAction(PRIORITY * (ClosedLocation - OpenLocation),
-											 Mathf.FloorToInt(ClosedLocation.x), Mathf.FloorToInt(ClosedLocation.y));
-			SpaceControl.obj.AttemptAction(PRIORITY * (ClosedLocation - OpenLocation),
-														Mathf.FloorToInt(OpenLocation.x), Mathf.FloorToInt(OpenLocation.y));
 		}
 	}
 	
 	public void DoorClose() {
 		if (state == State.Open) {
 			Active = true;
-			SpaceControl.obj.AttemptAction(PRIORITY * (OpenLocation - ClosedLocation),
-																		 Mathf.FloorToInt(ClosedLocation.x), Mathf.FloorToInt(ClosedLocation.y));
-			SpaceControl.obj.AttemptAction(PRIORITY * (OpenLocation - ClosedLocation),
-																		 Mathf.FloorToInt(OpenLocation.x), Mathf.FloorToInt(OpenLocation.y));
 		TimeControl.OnSetup -= DoorClose;
 		}
 	}
@@ -97,21 +92,15 @@ public class Doorway : MonoBehaviour {
 	//That typo is intentional.
 	public void DoorToogle() {
 		if (state == State.Open) {
-			DoorClose ();
+//			DoorClose ();
 		} else if (state == State.Closed){
-			DoorOpen();
+//			DoorOpen();
 		}
 	}
 	
 	public void StartAction() {
 		if (state == State.Open) {
-			Vector3 travelVector = SpaceControl.obj.ResolveAction(
-					PRIORITY * (OpenLocation - ClosedLocation),
-					Mathf.FloorToInt(ClosedLocation.x),
-					Mathf.FloorToInt(ClosedLocation.y));
-			if (travelVector.magnitude == 0f) {
-				Active = false;
-			}
+			//Whee
 		}
 	}
 	
