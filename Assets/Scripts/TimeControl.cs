@@ -3,16 +3,20 @@ using System.Collections;
 using UnityEngine.UI;
 
 public class TimeControl : MonoBehaviour {
+	public delegate void StartCycle();
 	public delegate void TelegraphAction();
 	public delegate void StartAction();
 	public delegate void StopAction();
+	public delegate void EndCycle();
 	public delegate void SetUp();
 	
 	//Universal
+	public static event StartCycle OnStartCycle;
 	public static event SetUp OnSetup;
 	public static event TelegraphAction OnTelegraph;
 	public static event StartAction OnStart;
 	public static event StopAction OnStop;
+	public static event EndCycle OnEndCycle;
 	
 	static public TimeControl obj;
 	static public int tick = 0;
@@ -57,9 +61,11 @@ public class TimeControl : MonoBehaviour {
 				time_since_update -= time_between_steps;
 				tick += 1;
 				State = state.transition;
-			if(OnSetup != null) OnSetup();
-			if(OnTelegraph != null) OnTelegraph();
-			if(OnStart != null) OnStart();
+				if(OnStartCycle != null) OnStartCycle();
+				if(OnSetup != null) OnSetup();
+				if(OnTelegraph != null) OnTelegraph();
+				if(OnStart != null) OnStart();
+				if(OnEndCycle != null) OnEndCycle();
 			}
 		} else { //state is transitioning
 			if (time_since_update > transition_time) {

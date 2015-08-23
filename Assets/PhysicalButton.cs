@@ -29,8 +29,7 @@ public class PhysicalButton : MonoBehaviour {
 					return;
 				} else {
 					isTriggered = true;
-					TimeControl.OnStart += statement.OnTick;
-					TimeControl.OnTelegraph += statement.OnTelegraph;
+					new StatementVisitor(statement);
 				}
 			}
 		}
@@ -40,8 +39,7 @@ public class PhysicalButton : MonoBehaviour {
 	}
 	
 	public void Reset() {
-		TimeControl.OnStart -= statement.OnTick;
-		TimeControl.OnTelegraph -= statement.OnTelegraph;
+			//TODO
 	}
 }
 

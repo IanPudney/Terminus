@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class IfElseStmt : StmtBlock {
 	public Statement ifBlock;
@@ -25,52 +26,13 @@ public class IfElseStmt : StmtBlock {
 		return tru;
 	}
 
-	/*public override bool CallNextChild() {
-		//Queue ();
+	public override List<Statement> getChildren() {
+		List<Statement> children = new List<Statement>();
 		if(Test ()) {
-			TimeControl.OnStart += ifBlock.OnTick;
-			TimeControl.OnTelegraph += ifBlock.OnTelegraph;
-			ifBlock.stack = stack;
+			children.Add (ifBlock);
 		} else {
-			TimeControl.OnStart += elseBlock.OnTick;
-			TimeControl.OnTelegraph += elseBlock.OnTelegraph;
-			elseBlock.stack = stack;
+			children.Add(elseBlock);
 		}
-		return true;
-	}*/
-	int nextStmt = 0;
-	public override bool CallNextChild() {
-		while (true) {
-			//call the next child, and remove this from the callback
-			
-			if (nextStmt >= transform.childCount) {
-				nextStmt = 0;
-				return true;
-			}
-			Statement child = transform.GetChild (nextStmt).GetComponent<Statement>();
-			
-			if (child == null || child is Placeholder) {
-				nextStmt++;
-				continue;
-			}
-			if(Test ()) {
-				if(child != ifBlock) {
-					nextStmt++;
-					continue;
-				}
-			} else {
-				if(child != elseBlock) {
-					nextStmt++;
-					continue;
-				}
-			}
-			Queue ();
-			Debug.Log ("Length: " + transform.childCount + " stmt: " + nextStmt);
-			TimeControl.OnStart += child.OnTick;
-			TimeControl.OnTelegraph += child.OnTelegraph;
-			child.stack = stack;
-			nextStmt ++;
-			return false;
-		}
+		return children;
 	}
 }

@@ -21,16 +21,17 @@ public class MoveStatement : Statement {
 	
 	protected override void Start() {
 		base.Start ();
-	RobotID = startRobotID;
+		RobotID = startRobotID;
+		TakesTurn = true;
 	}
 
 	public override void OnTick() {	
-	base.OnTick ();
+		Debug.Log ("Start Action");
 		ObjectDict.obj.robots[robotID].StartAction ();
 	}
 
 	public override void OnTelegraph() {
+		Debug.Log ("Move Forward Action");
 	ObjectDict.obj.robots[robotID].MoveForwardAction ();
-		base.OnTelegraph ();
 	}
 }

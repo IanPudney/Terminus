@@ -21,17 +21,16 @@ public class RotateRightStatement : Statement {
 	
 	protected override void Start() {
 		base.Start ();
+		TakesTurn = true;
 		RobotID = startRobotID;
 	}
 	
 	public override void OnTick() {
 		Debug.Log ("Rotating robot");
 		ObjectDict.obj.robots[robotID].StartAction ();
-		base.OnTick ();
 	}
 	
 	public override void OnTelegraph() {
 		ObjectDict.obj.robots[robotID].RotateRightAction ();
-		base.OnTelegraph ();
 	}
 }
