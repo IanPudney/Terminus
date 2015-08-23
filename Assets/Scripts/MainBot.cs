@@ -26,7 +26,7 @@ public class MainBot : WorldObject {
 		TimeControl.OnStop += StopAction;
 		TimeControl.OnStart += StartAction;
 		//Temp:
-		TimeControl.OnTelegraph += MoveForwardAction;
+		//TimeControl.OnTelegraph += MoveForwardAction;
 		
 	}
 
@@ -34,7 +34,7 @@ public class MainBot : WorldObject {
 		TimeControl.OnStop -= StopAction;
 		TimeControl.OnStart -= StartAction;
 		//Temp
-		TimeControl.OnTelegraph -= MoveForwardAction;
+		//TimeControl.OnTelegraph -= MoveForwardAction;
 	}
 	
 	/*void FixedUpdate() {

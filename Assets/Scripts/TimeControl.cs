@@ -54,7 +54,7 @@ public class TimeControl : MonoBehaviour {
 		if (!isPlaying) {
 			return;
 		}
-		Time.timeScale = timeSlider.value;
+		Time.timeScale = 3f * timeSlider.value;
 		time_since_update += Time.deltaTime	;
 		if (State == state.between) {
 			if (time_since_update > time_between_steps) {
