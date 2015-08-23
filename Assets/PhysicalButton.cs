@@ -8,7 +8,9 @@ public class PhysicalButton : MonoBehaviour {
 	bool isTriggered = false;
 	void Start() {
 		GetComponentInChildren<TextMesh>().text = buttonNumber.ToString ();
-		statement.setButtonNumber(buttonNumber);
+		if (statement) {
+			statement.setButtonNumber(buttonNumber);
+		}
 	}
 	void OnEnable() {
 		TimeControl.OnStop += CheckForPlayer;

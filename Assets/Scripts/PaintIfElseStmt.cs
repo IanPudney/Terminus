@@ -8,7 +8,9 @@ public class PaintIfElseStmt : IfElseStmt {
 		base.Start ();
 		ifBlock.SetupLabel().text = "True";
 		elseBlock.SetupLabel().text = "False";
-		SetupLabel().text = "If <color=\"cyan\">R" + robot.ID + "</color> On Paint:";
+		if (robot) {
+			SetupLabel().text = "If <color=\"cyan\">R" + robot.ID + "</color> On Paint:";
+		}
 	}
 
 	public override bool Test() {
